@@ -24,43 +24,50 @@ export default function AdminPage() {
   const [users, setUsers] = useState([
     {
       id: 1,
-      name: "田中太郎",
-      email: "tanaka@example.com",
-      role: "システム",
-      department: "IT部",
-      status: "アクティブ",
+      name: "John Smith",
+      email: "john@example.com",
+      role: "System Admin",
+      department: "IT Department",
+      status: "Active",
     },
-    { id: 2, name: "佐藤花子", email: "sato@example.com", role: "管理", department: "営業部", status: "アクティブ" },
+    {
+      id: 2,
+      name: "Jane Doe",
+      email: "jane@example.com",
+      role: "Admin",
+      department: "Sales Department",
+      status: "Active",
+    },
     {
       id: 3,
-      name: "鈴木一郎",
-      email: "suzuki@example.com",
-      role: "ノーマル",
-      department: "営業部",
-      status: "アクティブ",
+      name: "Mike Johnson",
+      email: "mike@example.com",
+      role: "User",
+      department: "Sales Department",
+      status: "Active",
     },
     {
       id: 4,
-      name: "高橋美咲",
-      email: "takahashi@example.com",
-      role: "ノーマル",
-      department: "マーケティング部",
-      status: "非アクティブ",
+      name: "Sarah Wilson",
+      email: "sarah@example.com",
+      role: "User",
+      department: "Marketing Department",
+      status: "Inactive",
     },
   ])
 
   const [departments, setDepartments] = useState([
-    { id: 1, name: "IT部", parentId: null, userCount: 5 },
-    { id: 2, name: "営業部", parentId: null, userCount: 12 },
-    { id: 3, name: "マーケティング部", parentId: null, userCount: 8 },
-    { id: 4, name: "人事部", parentId: null, userCount: 4 },
-    { id: 5, name: "財務部", parentId: null, userCount: 6 },
+    { id: 1, name: "IT Department", parentId: null, userCount: 5 },
+    { id: 2, name: "Sales Department", parentId: null, userCount: 12 },
+    { id: 3, name: "Marketing Department", parentId: null, userCount: 8 },
+    { id: 4, name: "HR Department", parentId: null, userCount: 4 },
+    { id: 5, name: "Finance Department", parentId: null, userCount: 6 },
   ])
 
   const [newUser, setNewUser] = useState({
     name: "",
     email: "",
-    role: "ノーマル",
+    role: "User",
     department: "",
   })
 
@@ -71,11 +78,11 @@ export default function AdminPage() {
 
   const getRoleBadge = (role: string) => {
     switch (role) {
-      case "システム":
+      case "System Admin":
         return <Badge variant="destructive">{role}</Badge>
-      case "管理":
+      case "Admin":
         return <Badge variant="default">{role}</Badge>
-      case "ノーマル":
+      case "User":
         return <Badge variant="outline">{role}</Badge>
       default:
         return <Badge variant="outline">{role}</Badge>
@@ -84,16 +91,16 @@ export default function AdminPage() {
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case "アクティブ":
+      case "Active":
         return (
           <Badge variant="outline" className="bg-green-100 text-green-800">
-            アクティブ
+            Active
           </Badge>
         )
-      case "非アクティブ":
+      case "Inactive":
         return (
           <Badge variant="outline" className="bg-red-100 text-red-800">
-            非アクティブ
+            Inactive
           </Badge>
         )
       default:
@@ -105,10 +112,10 @@ export default function AdminPage() {
     const user = {
       id: users.length + 1,
       ...newUser,
-      status: "アクティブ",
+      status: "Active",
     }
     setUsers([...users, user])
-    setNewUser({ name: "", email: "", role: "ノーマル", department: "" })
+    setNewUser({ name: "", email: "", role: "User", department: "" })
   }
 
   const handleDeleteUser = (id: number) => {
@@ -132,7 +139,7 @@ export default function AdminPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">管理機能</h1>
+        <h1 className="text-3xl font-bold">Admin Panel</h1>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="icon">
             <Settings className="h-4 w-4" />
@@ -143,36 +150,34 @@ export default function AdminPage() {
       <div className="grid gap-6 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">総ユーザー数</CardTitle>
+            <CardTitle className="text-sm font-medium">Total Users</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{users.length}</div>
-            <p className="text-xs text-muted-foreground">
-              アクティブ: {users.filter((u) => u.status === "アクティブ").length}
-            </p>
+            <p className="text-xs text-muted-foreground">Active: {users.filter((u) => u.status === "Active").length}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">部署数</CardTitle>
+            <CardTitle className="text-sm font-medium">Departments</CardTitle>
             <Building className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{departments.length}</div>
-            <p className="text-xs text-muted-foreground">組織全体</p>
+            <p className="text-xs text-muted-foreground">Organization-wide</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">管理者数</CardTitle>
+            <CardTitle className="text-sm font-medium">Administrators</CardTitle>
             <Shield className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {users.filter((u) => u.role === "管理" || u.role === "システム").length}
+              {users.filter((u) => u.role === "Admin" || u.role === "System Admin").length}
             </div>
-            <p className="text-xs text-muted-foreground">システム・管理権限</p>
+            <p className="text-xs text-muted-foreground">System & Admin privileges</p>
           </CardContent>
         </Card>
       </div>
@@ -181,11 +186,11 @@ export default function AdminPage() {
         <TabsList>
           <TabsTrigger value="users">
             <Users className="mr-2 h-4 w-4" />
-            ユーザー管理
+            User Management
           </TabsTrigger>
           <TabsTrigger value="departments">
             <Building className="mr-2 h-4 w-4" />
-            組織・部署管理
+            Department Management
           </TabsTrigger>
         </TabsList>
 
@@ -194,33 +199,33 @@ export default function AdminPage() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle>ユーザー管理</CardTitle>
-                  <CardDescription>システムユーザーの追加・編集・削除を行います</CardDescription>
+                  <CardTitle>User Management</CardTitle>
+                  <CardDescription>Add, edit, and delete system users</CardDescription>
                 </div>
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button>
                       <Plus className="mr-2 h-4 w-4" />
-                      ユーザー追加
+                      Add User
                     </Button>
                   </DialogTrigger>
                   <DialogContent>
                     <DialogHeader>
-                      <DialogTitle>新しいユーザーを追加</DialogTitle>
-                      <DialogDescription>新しいユーザーの情報を入力してください</DialogDescription>
+                      <DialogTitle>Add New User</DialogTitle>
+                      <DialogDescription>Enter the new user's information</DialogDescription>
                     </DialogHeader>
                     <div className="space-y-4">
                       <div className="space-y-2">
-                        <Label htmlFor="name">名前</Label>
+                        <Label htmlFor="name">Name</Label>
                         <Input
                           id="name"
                           value={newUser.name}
                           onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
-                          placeholder="ユーザー名を入力"
+                          placeholder="Enter user name"
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">メールアドレス</Label>
+                        <Label htmlFor="email">Email Address</Label>
                         <Input
                           id="email"
                           type="email"
@@ -230,26 +235,26 @@ export default function AdminPage() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="role">権限</Label>
+                        <Label htmlFor="role">Role</Label>
                         <Select value={newUser.role} onValueChange={(value) => setNewUser({ ...newUser, role: value })}>
                           <SelectTrigger>
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="ノーマル">ノーマル</SelectItem>
-                            <SelectItem value="管理">管理</SelectItem>
-                            <SelectItem value="システム">システム</SelectItem>
+                            <SelectItem value="User">User</SelectItem>
+                            <SelectItem value="Admin">Admin</SelectItem>
+                            <SelectItem value="System Admin">System Admin</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="department">部署</Label>
+                        <Label htmlFor="department">Department</Label>
                         <Select
                           value={newUser.department}
                           onValueChange={(value) => setNewUser({ ...newUser, department: value })}
                         >
                           <SelectTrigger>
-                            <SelectValue placeholder="部署を選択" />
+                            <SelectValue placeholder="Select department" />
                           </SelectTrigger>
                           <SelectContent>
                             {departments.map((dept) => (
@@ -262,7 +267,7 @@ export default function AdminPage() {
                       </div>
                     </div>
                     <DialogFooter>
-                      <Button onClick={handleAddUser}>追加</Button>
+                      <Button onClick={handleAddUser}>Add</Button>
                     </DialogFooter>
                   </DialogContent>
                 </Dialog>
@@ -272,12 +277,12 @@ export default function AdminPage() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>名前</TableHead>
-                    <TableHead>メールアドレス</TableHead>
-                    <TableHead>権限</TableHead>
-                    <TableHead>部署</TableHead>
-                    <TableHead>ステータス</TableHead>
-                    <TableHead className="w-[100px]">操作</TableHead>
+                    <TableHead>Name</TableHead>
+                    <TableHead>Email Address</TableHead>
+                    <TableHead>Role</TableHead>
+                    <TableHead>Department</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead className="w-[100px]">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -311,33 +316,33 @@ export default function AdminPage() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle>組織・部署管理</CardTitle>
-                  <CardDescription>組織構造と部署の管理を行います</CardDescription>
+                  <CardTitle>Department Management</CardTitle>
+                  <CardDescription>Manage organizational structure and departments</CardDescription>
                 </div>
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button>
                       <Plus className="mr-2 h-4 w-4" />
-                      部署追加
+                      Add Department
                     </Button>
                   </DialogTrigger>
                   <DialogContent>
                     <DialogHeader>
-                      <DialogTitle>新しい部署を追加</DialogTitle>
-                      <DialogDescription>新しい部署の情報を入力してください</DialogDescription>
+                      <DialogTitle>Add New Department</DialogTitle>
+                      <DialogDescription>Enter the new department information</DialogDescription>
                     </DialogHeader>
                     <div className="space-y-4">
                       <div className="space-y-2">
-                        <Label htmlFor="dept-name">部署名</Label>
+                        <Label htmlFor="dept-name">Department Name</Label>
                         <Input
                           id="dept-name"
                           value={newDepartment.name}
                           onChange={(e) => setNewDepartment({ ...newDepartment, name: e.target.value })}
-                          placeholder="部署名を入力"
+                          placeholder="Enter department name"
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="parent-dept">親部署</Label>
+                        <Label htmlFor="parent-dept">Parent Department</Label>
                         <Select
                           onValueChange={(value) =>
                             setNewDepartment({
@@ -347,10 +352,10 @@ export default function AdminPage() {
                           }
                         >
                           <SelectTrigger>
-                            <SelectValue placeholder="親部署を選択（任意）" />
+                            <SelectValue placeholder="Select parent department (optional)" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="none">なし（トップレベル）</SelectItem>
+                            <SelectItem value="none">None (Top Level)</SelectItem>
                             {departments.map((dept) => (
                               <SelectItem key={dept.id} value={dept.id.toString()}>
                                 {dept.name}
@@ -361,7 +366,7 @@ export default function AdminPage() {
                       </div>
                     </div>
                     <DialogFooter>
-                      <Button onClick={handleAddDepartment}>追加</Button>
+                      <Button onClick={handleAddDepartment}>Add</Button>
                     </DialogFooter>
                   </DialogContent>
                 </Dialog>
@@ -371,18 +376,18 @@ export default function AdminPage() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>部署名</TableHead>
-                    <TableHead>ユーザー数</TableHead>
-                    <TableHead>階層</TableHead>
-                    <TableHead className="w-[100px]">操作</TableHead>
+                    <TableHead>Department Name</TableHead>
+                    <TableHead>User Count</TableHead>
+                    <TableHead>Level</TableHead>
+                    <TableHead className="w-[100px]">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {departments.map((dept) => (
                     <TableRow key={dept.id}>
                       <TableCell className="font-medium">{dept.name}</TableCell>
-                      <TableCell>{dept.userCount}人</TableCell>
-                      <TableCell>{dept.parentId ? "サブ部署" : "トップレベル"}</TableCell>
+                      <TableCell>{dept.userCount} users</TableCell>
+                      <TableCell>{dept.parentId ? "Sub-department" : "Top Level"}</TableCell>
                       <TableCell>
                         <div className="flex items-center gap-1">
                           <Button variant="ghost" size="icon">
