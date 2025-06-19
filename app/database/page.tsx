@@ -43,114 +43,114 @@ export default function DatabasePage() {
   const [selectedCategory, setSelectedCategory] = useState("")
   const [selectedCompany, setSelectedCompany] = useState("")
 
-  // Database categories
+  // データベースカテゴリ
   const categories = [
-    { id: "securities_reports", name: "Securities Reports", icon: FileText, color: "bg-blue-100 text-blue-800" },
-    { id: "integrated_reports", name: "Integrated Reports", icon: TrendingUp, color: "bg-green-100 text-green-800" },
-    { id: "esg_reports", name: "ESG Reports", icon: Leaf, color: "bg-emerald-100 text-emerald-800" },
-    { id: "press_releases", name: "Press Releases", icon: Megaphone, color: "bg-purple-100 text-purple-800" },
-    { id: "market_news", name: "Market News", icon: TrendingUp, color: "bg-orange-100 text-orange-800" },
-    { id: "general_news", name: "General News", icon: Newspaper, color: "bg-gray-100 text-gray-800" },
-    { id: "market_data", name: "Market Data", icon: BarChart3, color: "bg-red-100 text-red-800" },
+    { id: "securities_reports", name: "有価証券報告書", icon: FileText, color: "bg-blue-100 text-blue-800" },
+    { id: "integrated_reports", name: "統合レポート", icon: TrendingUp, color: "bg-green-100 text-green-800" },
+    { id: "esg_reports", name: "ESGレポート", icon: Leaf, color: "bg-emerald-100 text-emerald-800" },
+    { id: "press_releases", name: "プレス", icon: Megaphone, color: "bg-purple-100 text-purple-800" },
+    { id: "market_news", name: "市場ニュース", icon: TrendingUp, color: "bg-orange-100 text-orange-800" },
+    { id: "general_news", name: "一般ニュース", icon: Newspaper, color: "bg-gray-100 text-gray-800" },
+    { id: "market_data", name: "市場データ", icon: BarChart3, color: "bg-red-100 text-red-800" },
   ]
 
-  // Sample data
+  // サンプルデータ
   const databaseItems = [
     {
       id: 1,
-      title: "Toyota Motor Corporation Securities Report for FY2023",
+      title: "トヨタ自動車株式会社 有価証券報告書 2023年度",
       category: "securities_reports",
-      company: "Toyota Motor Corporation",
+      company: "トヨタ自動車",
       date: "2023/06/30",
       size: "15.2 MB",
-      status: "Processed",
+      status: "処理済",
       downloads: 245,
     },
     {
       id: 2,
-      title: "SoftBank Group Integrated Report 2023",
+      title: "ソフトバンクグループ 統合レポート 2023",
       category: "integrated_reports",
-      company: "SoftBank Group",
+      company: "ソフトバンクグループ",
       date: "2023/07/15",
       size: "8.7 MB",
-      status: "Processed",
+      status: "処理済",
       downloads: 189,
     },
     {
       id: 3,
-      title: "Mitsubishi UFJ Financial Group ESG Report 2023",
+      title: "三菱UFJフィナンシャル・グループ ESGレポート 2023",
       category: "esg_reports",
-      company: "Mitsubishi UFJ Financial Group",
+      company: "三菱UFJフィナンシャル・グループ",
       date: "2023/08/01",
       size: "12.4 MB",
-      status: "Processing",
+      status: "処理中",
       downloads: 156,
     },
     {
       id: 4,
-      title: "Bank of Japan: Results of Monetary Policy Meeting",
+      title: "日本銀行 金融政策決定会合の結果について",
       category: "press_releases",
-      company: "Bank of Japan",
+      company: "日本銀行",
       date: "2023/12/19",
       size: "2.1 MB",
-      status: "Processed",
+      status: "処理済",
       downloads: 892,
     },
     {
       id: 5,
-      title: "TOPIX Monthly Report December 2023",
+      title: "東証株価指数（TOPIX）月次レポート 2023年12月",
       category: "market_data",
-      company: "Tokyo Stock Exchange",
+      company: "東京証券取引所",
       date: "2023/12/29",
       size: "5.8 MB",
-      status: "Processed",
+      status: "処理済",
       downloads: 334,
     },
     {
       id: 6,
-      title: "Nikkei Stock Average Hits Year-to-Date High",
+      title: "日経平均株価が年初来高値を更新",
       category: "market_news",
-      company: "Nikkei",
+      company: "日本経済新聞",
       date: "2023/12/28",
       size: "1.2 MB",
-      status: "Processed",
+      status: "処理済",
       downloads: 567,
     },
   ]
 
   const companies = [
-    "Toyota Motor Corporation",
-    "SoftBank Group",
-    "Mitsubishi UFJ Financial Group",
-    "Bank of Japan",
-    "Tokyo Stock Exchange",
-    "Nikkei",
+    "トヨタ自動車",
+    "ソフトバンクグループ",
+    "三菱UFJフィナンシャル・グループ",
+    "日本銀行",
+    "東京証券取引所",
+    "日本経済新聞",
   ]
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case "Processed":
+      case "処理済":
         return (
           <Badge variant="outline" className="bg-green-100 text-green-800">
-            Processed
+            処理済
           </Badge>
         )
-      case "Processing":
+      case "処理中":
         return (
           <Badge variant="outline" className="bg-blue-100 text-blue-800">
-            Processing
+            処理中
           </Badge>
         )
-      case "Pending":
+      case "未処理":
         return (
           <Badge variant="outline" className="bg-yellow-100 text-yellow-800">
-            Pending
+            未処理
           </Badge>
         )
-      case "Error":
+      case "エラー":
         return (
           <Badge variant="outline" className="bg-red-100 text-red-800">
-            Error
+            エラー
           </Badge>
         )
       default:
@@ -176,22 +176,22 @@ export default function DatabasePage() {
     return categories.map((category) => ({
       ...category,
       count: databaseItems.filter((item) => item.category === category.id).length,
-      processed: databaseItems.filter((item) => item.category === category.id && item.status === "Processed").length,
+      processed: databaseItems.filter((item) => item.category === category.id && item.status === "処理済").length,
     }))
   }
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Database</h1>
+        <h1 className="text-3xl font-bold">データベース</h1>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm">
             <Upload className="mr-2 h-4 w-4" />
-            Batch Import
+            一括インポート
           </Button>
           <Button variant="outline" size="sm">
             <Download className="mr-2 h-4 w-4" />
-            Export
+            エクスポート
           </Button>
           <Button variant="outline" size="icon">
             <Settings className="h-4 w-4" />
@@ -199,7 +199,7 @@ export default function DatabasePage() {
         </div>
       </div>
 
-      {/* Statistics Cards */}
+      {/* 統計カード */}
       <div className="grid gap-4 md:grid-cols-4 lg:grid-cols-7">
         {getCategoryStats().map((category) => (
           <Card key={category.id} className="cursor-pointer hover:shadow-md transition-shadow">
@@ -211,7 +211,7 @@ export default function DatabasePage() {
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">{category.name}</p>
                 <p className="text-xs text-muted-foreground">
-                  Processed: {category.processed}/{category.count}
+                  処理済: {category.processed}/{category.count}
                 </p>
               </div>
             </CardContent>
@@ -219,20 +219,20 @@ export default function DatabasePage() {
         ))}
       </div>
 
-      {/* Search & Filter */}
+      {/* 検索・フィルター */}
       <Card>
         <CardHeader>
-          <CardTitle>Search & Filter</CardTitle>
-          <CardDescription>Search and filter documents in the database</CardDescription>
+          <CardTitle>検索・フィルター</CardTitle>
+          <CardDescription>データベース内のドキュメントを検索・絞り込みできます</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid gap-4 md:grid-cols-4">
             <div className="space-y-2">
-              <Label>Keyword Search</Label>
+              <Label>キーワード検索</Label>
               <div className="relative">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
-                  placeholder="Search by title, company name..."
+                  placeholder="タイトル、企業名で検索..."
                   className="pl-8"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -240,13 +240,13 @@ export default function DatabasePage() {
               </div>
             </div>
             <div className="space-y-2">
-              <Label>Category</Label>
+              <Label>カテゴリ</Label>
               <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select category" />
+                  <SelectValue placeholder="カテゴリを選択" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All</SelectItem>
+                  <SelectItem value="all">すべて</SelectItem>
                   {categories.map((category) => (
                     <SelectItem key={category.id} value={category.id}>
                       {category.name}
@@ -256,13 +256,13 @@ export default function DatabasePage() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label>Company/Organization</Label>
+              <Label>企業・組織</Label>
               <Select value={selectedCompany} onValueChange={setSelectedCompany}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select company" />
+                  <SelectValue placeholder="企業を選択" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all_companies">All</SelectItem>
+                  <SelectItem value="">すべて</SelectItem>
                   {companies.map((company) => (
                     <SelectItem key={company} value={company}>
                       {company}
@@ -272,18 +272,18 @@ export default function DatabasePage() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label>Period</Label>
+              <Label>期間</Label>
               <Select defaultValue="all">
                 <SelectTrigger>
-                  <SelectValue placeholder="Select period" />
+                  <SelectValue placeholder="期間を選択" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All</SelectItem>
-                  <SelectItem value="today">Today</SelectItem>
-                  <SelectItem value="week">This Week</SelectItem>
-                  <SelectItem value="month">This Month</SelectItem>
-                  <SelectItem value="quarter">This Quarter</SelectItem>
-                  <SelectItem value="year">This Year</SelectItem>
+                  <SelectItem value="all">すべて</SelectItem>
+                  <SelectItem value="today">今日</SelectItem>
+                  <SelectItem value="week">今週</SelectItem>
+                  <SelectItem value="month">今月</SelectItem>
+                  <SelectItem value="quarter">今四半期</SelectItem>
+                  <SelectItem value="year">今年</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -291,37 +291,37 @@ export default function DatabasePage() {
         </CardContent>
       </Card>
 
-      {/* Database List */}
+      {/* データベース一覧 */}
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle>Database List</CardTitle>
-              <CardDescription>{filteredItems.length} documents found</CardDescription>
+              <CardTitle>データベース一覧</CardTitle>
+              <CardDescription>{filteredItems.length}件のドキュメントが見つかりました</CardDescription>
             </div>
             <Dialog>
               <DialogTrigger asChild>
                 <Button>
                   <Plus className="mr-2 h-4 w-4" />
-                  Add New
+                  新規追加
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-2xl">
                 <DialogHeader>
-                  <DialogTitle>Add New Document</DialogTitle>
-                  <DialogDescription>Add a new document to the database</DialogDescription>
+                  <DialogTitle>新しいドキュメントを追加</DialogTitle>
+                  <DialogDescription>データベースに新しいドキュメントを追加します</DialogDescription>
                 </DialogHeader>
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>Title</Label>
-                      <Input placeholder="Document title" />
+                      <Label>タイトル</Label>
+                      <Input placeholder="ドキュメントタイトル" />
                     </div>
                     <div className="space-y-2">
-                      <Label>Category</Label>
+                      <Label>カテゴリ</Label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select category" />
+                          <SelectValue placeholder="カテゴリを選択" />
                         </SelectTrigger>
                         <SelectContent>
                           {categories.map((category) => (
@@ -335,25 +335,25 @@ export default function DatabasePage() {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>Company/Organization</Label>
-                      <Input placeholder="Company or organization name" />
+                      <Label>企業・組織</Label>
+                      <Input placeholder="企業名または組織名" />
                     </div>
                     <div className="space-y-2">
-                      <Label>Publication Date</Label>
+                      <Label>発行日</Label>
                       <Input type="date" />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label>Description</Label>
-                    <Textarea placeholder="Document description (optional)" />
+                    <Label>説明</Label>
+                    <Textarea placeholder="ドキュメントの説明（任意）" />
                   </div>
                   <div className="space-y-2">
-                    <Label>File</Label>
+                    <Label>ファイル</Label>
                     <Input type="file" accept=".pdf,.doc,.docx,.xls,.xlsx" />
                   </div>
                 </div>
                 <DialogFooter>
-                  <Button>Add</Button>
+                  <Button>追加</Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
@@ -362,21 +362,21 @@ export default function DatabasePage() {
         <CardContent>
           <Tabs defaultValue="table">
             <TabsList>
-              <TabsTrigger value="table">Table View</TabsTrigger>
-              <TabsTrigger value="cards">Card View</TabsTrigger>
+              <TabsTrigger value="table">テーブル表示</TabsTrigger>
+              <TabsTrigger value="cards">カード表示</TabsTrigger>
             </TabsList>
             <TabsContent value="table" className="mt-4">
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Title</TableHead>
-                    <TableHead>Category</TableHead>
-                    <TableHead>Company/Organization</TableHead>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Size</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Downloads</TableHead>
-                    <TableHead className="w-[100px]">Actions</TableHead>
+                    <TableHead>タイトル</TableHead>
+                    <TableHead>カテゴリ</TableHead>
+                    <TableHead>企業・組織</TableHead>
+                    <TableHead>日付</TableHead>
+                    <TableHead>サイズ</TableHead>
+                    <TableHead>ステータス</TableHead>
+                    <TableHead>DL数</TableHead>
+                    <TableHead className="w-[100px]">操作</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -412,13 +412,13 @@ export default function DatabasePage() {
                         <TableCell className="text-sm text-muted-foreground">{item.downloads}</TableCell>
                         <TableCell>
                           <div className="flex items-center gap-1">
-                            <Button variant="ghost" size="icon" title="Preview">
+                            <Button variant="ghost" size="icon" title="プレビュー">
                               <Eye className="h-4 w-4" />
                             </Button>
-                            <Button variant="ghost" size="icon" title="Edit">
+                            <Button variant="ghost" size="icon" title="編集">
                               <Edit className="h-4 w-4" />
                             </Button>
-                            <Button variant="ghost" size="icon" title="Delete">
+                            <Button variant="ghost" size="icon" title="削除">
                               <Trash2 className="h-4 w-4" />
                             </Button>
                           </div>
@@ -455,17 +455,17 @@ export default function DatabasePage() {
                           <span>{item.date}</span>
                         </div>
                         <div className="flex items-center justify-between text-sm text-muted-foreground">
-                          <span>Size: {item.size}</span>
-                          <span>Downloads: {item.downloads}</span>
+                          <span>サイズ: {item.size}</span>
+                          <span>DL: {item.downloads}</span>
                         </div>
                         <div className="flex items-center gap-1 pt-2">
                           <Button variant="ghost" size="sm">
                             <Eye className="mr-1 h-4 w-4" />
-                            Preview
+                            プレビュー
                           </Button>
                           <Button variant="ghost" size="sm">
                             <Download className="mr-1 h-4 w-4" />
-                            Download
+                            DL
                           </Button>
                         </div>
                       </CardContent>

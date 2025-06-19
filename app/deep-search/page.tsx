@@ -30,40 +30,40 @@ export default function DeepSearchPage() {
   const [query, setQuery] = React.useState("")
 
   const steps = [
-    { id: "plan", name: "Analysis Plan", icon: Brain },
-    { id: "search", name: "Web Search", icon: Search },
-    { id: "ideas", name: "Idea Generation", icon: Lightbulb },
-    { id: "critique", name: "Critical Evaluation", icon: AlertTriangle },
-    { id: "finalize", name: "Finalization", icon: CheckCircle },
+    { id: "plan", name: "分析計画", icon: Brain },
+    { id: "search", name: "Web検索", icon: Search },
+    { id: "ideas", name: "アイデア生成", icon: Lightbulb },
+    { id: "critique", name: "批判的評価", icon: AlertTriangle },
+    { id: "finalize", name: "最終化", icon: CheckCircle },
   ]
 
   const experts = [
     {
-      name: "Data Tanaka",
-      role: "Data Scientist",
+      name: "田中 データ",
+      role: "データサイエンティスト",
       avatar: "/placeholder.svg?height=40&width=40",
-      specialty: "Statistical Analysis, Machine Learning",
+      specialty: "統計分析・機械学習",
       score: 4.8,
     },
     {
-      name: "Business Sato",
-      role: "Business Analyst",
+      name: "佐藤 ビジネス",
+      role: "ビジネスアナリスト",
       avatar: "/placeholder.svg?height=40&width=40",
-      specialty: "Market Analysis, Strategy Planning",
+      specialty: "市場分析・戦略立案",
       score: 4.9,
     },
     {
-      name: "Tech Yamada",
-      role: "Technical Architect",
+      name: "山田 テック",
+      role: "テクニカルアーキテクト",
       avatar: "/placeholder.svg?height=40&width=40",
-      specialty: "System Design, Technology Evaluation",
+      specialty: "システム設計・技術評価",
       score: 4.7,
     },
   ]
 
   const handleStartAnalysis = () => {
     setIsAnalyzing(true)
-    // Simulation: Execute each step sequentially
+    // シミュレーション: 各ステップを順次実行
     const interval = setInterval(() => {
       setCurrentStep((prev) => {
         if (prev >= steps.length - 1) {
@@ -81,26 +81,26 @@ export default function DeepSearchPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Deep Search</h1>
-          <p className="text-muted-foreground">In-depth analysis and insights from multiple experts</p>
+          <p className="text-muted-foreground">複数の専門家による深い分析と洞察</p>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" size="sm">
             <Share2 className="h-4 w-4 mr-2" />
-            Share
+            共有
           </Button>
           <Button variant="outline" size="sm">
             <Download className="h-4 w-4 mr-2" />
-            Export
+            エクスポート
           </Button>
         </div>
       </div>
 
-      {/* Progress */}
+      {/* 進行状況 */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <TrendingUp className="h-5 w-5" />
-            Analysis Progress
+            分析進行状況
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -125,7 +125,7 @@ export default function DeepSearchPage() {
       </Card>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Main Analysis Area */}
+        {/* メイン分析エリア */}
         <div className="lg:col-span-2 space-y-6">
           <Tabs value={steps[currentStep]?.id} className="w-full">
             <TabsList className="grid w-full grid-cols-5">
@@ -139,32 +139,32 @@ export default function DeepSearchPage() {
             <TabsContent value="plan" className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Analysis Plan</CardTitle>
-                  <CardDescription>Enter the topic and purpose of the analysis</CardDescription>
+                  <CardTitle>分析計画</CardTitle>
+                  <CardDescription>分析したいトピックと目的を入力してください</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <label className="text-sm font-medium">Analysis Query</label>
+                    <label className="text-sm font-medium">分析クエリ</label>
                     <Input
-                      placeholder="Ex: Growth forecast for the electric vehicle market over the next 5 years"
+                      placeholder="例: 電気自動車市場の今後5年間の成長予測"
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium">Purpose of Analysis</label>
-                    <Textarea placeholder="Describe the purpose of the analysis, expected outcomes, and how it will be used" />
+                    <label className="text-sm font-medium">分析の目的</label>
+                    <Textarea placeholder="分析の目的、期待される成果、活用方法を記述してください" />
                   </div>
                   <Button onClick={handleStartAnalysis} disabled={!query || isAnalyzing}>
                     {isAnalyzing ? (
                       <>
                         <Clock className="h-4 w-4 mr-2 animate-spin" />
-                        Analyzing...
+                        分析中...
                       </>
                     ) : (
                       <>
                         <Brain className="h-4 w-4 mr-2" />
-                        Start Analysis
+                        分析開始
                       </>
                     )}
                   </Button>
@@ -175,8 +175,8 @@ export default function DeepSearchPage() {
             <TabsContent value="search" className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Web Search Results</CardTitle>
-                  <CardDescription>Collecting relevant information</CardDescription>
+                  <CardTitle>Web検索結果</CardTitle>
+                  <CardDescription>関連性の高い情報を収集しています</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
@@ -184,10 +184,10 @@ export default function DeepSearchPage() {
                       <div key={i} className="p-3 border rounded-lg">
                         <div className="flex items-start justify-between">
                           <div className="space-y-1">
-                            <h4 className="font-medium">Search Result {i}</h4>
-                            <p className="text-sm text-muted-foreground">Relevant information found...</p>
+                            <h4 className="font-medium">検索結果 {i}</h4>
+                            <p className="text-sm text-muted-foreground">関連性の高い情報が見つかりました...</p>
                           </div>
-                          <Badge variant="secondary">Relevance: {95 - i * 5}%</Badge>
+                          <Badge variant="secondary">関連度: {95 - i * 5}%</Badge>
                         </div>
                       </div>
                     ))}
@@ -199,8 +199,8 @@ export default function DeepSearchPage() {
             <TabsContent value="ideas" className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Idea Generation by Experts</CardTitle>
-                  <CardDescription>Three experts propose ideas from multiple perspectives</CardDescription>
+                  <CardTitle>専門家によるアイデア生成</CardTitle>
+                  <CardDescription>3名の専門家が多角的な視点でアイデアを提案</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -223,8 +223,8 @@ export default function DeepSearchPage() {
                             <p className="text-sm text-muted-foreground">{expert.specialty}</p>
                             <div className="p-3 bg-muted rounded-md">
                               <p className="text-sm">
-                                From the perspective of a {expert.role}, I have conducted a detailed analysis of {query}
-                                . I propose the following key insights and ideas...
+                                {expert.role}の観点から、{query}について詳細な分析を行いました。
+                                主要な洞察とアイデアを提案いたします...
                               </p>
                             </div>
                           </div>
@@ -239,29 +239,25 @@ export default function DeepSearchPage() {
             <TabsContent value="critique" className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Critical Evaluation and Audit</CardTitle>
-                  <CardDescription>Verification and identification of improvements for proposed ideas</CardDescription>
+                  <CardTitle>批判的評価と監査</CardTitle>
+                  <CardDescription>提案されたアイデアの検証と改善点の特定</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="p-4 border-l-4 border-red-500 bg-red-50">
-                      <h4 className="font-medium text-red-800">Potential Risks</h4>
-                      <p className="text-sm text-red-700 mt-1">
-                        Market volatility, technical constraints, competitor trends, etc...
-                      </p>
+                      <h4 className="font-medium text-red-800">潜在的リスク</h4>
+                      <p className="text-sm text-red-700 mt-1">市場の変動性、技術的制約、競合他社の動向など...</p>
                     </div>
                     <div className="p-4 border-l-4 border-yellow-500 bg-yellow-50">
-                      <h4 className="font-medium text-yellow-800">Improvement Proposals</h4>
+                      <h4 className="font-medium text-yellow-800">改善提案</h4>
                       <p className="text-sm text-yellow-700 mt-1">
-                        More detailed data collection, additional validation experiments, consultations with
-                        stakeholders...
+                        より詳細なデータ収集、追加の検証実験、ステークホルダーとの協議...
                       </p>
                     </div>
                     <div className="p-4 border-l-4 border-blue-500 bg-blue-50">
-                      <h4 className="font-medium text-blue-800">Audit Opinion</h4>
+                      <h4 className="font-medium text-blue-800">監査意見</h4>
                       <p className="text-sm text-blue-700 mt-1">
-                        Overall, a reasonably valid analysis, but additional consideration is needed in the following
-                        areas...
+                        全体的に妥当性の高い分析ですが、以下の点で追加検討が必要...
                       </p>
                     </div>
                   </div>
@@ -272,26 +268,25 @@ export default function DeepSearchPage() {
             <TabsContent value="finalize" className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Final Integrated Idea</CardTitle>
-                  <CardDescription>Final integration and refinement by experts</CardDescription>
+                  <CardTitle>最終統合アイデア</CardTitle>
+                  <CardDescription>専門家による最終的な統合と洗練</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                      <h4 className="font-medium text-green-800">Integrated Idea</h4>
+                      <h4 className="font-medium text-green-800">統合アイデア</h4>
                       <p className="text-sm text-green-700 mt-2">
-                        After discussion and critical evaluation by three experts, the following integrated idea has
-                        been completed...
+                        3名の専門家による議論と批判的評価を経て、以下の統合アイデアが完成しました...
                       </p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-3 border rounded-lg">
-                        <h5 className="font-medium">Implementation Plan</h5>
-                        <p className="text-sm text-muted-foreground mt-1">A phased implementation approach...</p>
+                        <h5 className="font-medium">実装計画</h5>
+                        <p className="text-sm text-muted-foreground mt-1">段階的な実装アプローチ...</p>
                       </div>
                       <div className="p-3 border rounded-lg">
-                        <h5 className="font-medium">Expected Effects</h5>
-                        <p className="text-sm text-muted-foreground mt-1">Quantitative and qualitative effects...</p>
+                        <h5 className="font-medium">期待効果</h5>
+                        <p className="text-sm text-muted-foreground mt-1">定量的・定性的な効果...</p>
                       </div>
                     </div>
                   </div>
@@ -301,13 +296,13 @@ export default function DeepSearchPage() {
           </Tabs>
         </div>
 
-        {/* Side Panel */}
+        {/* サイドパネル */}
         <div className="space-y-6">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Users className="h-5 w-5" />
-                Expert Team
+                専門家チーム
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -336,22 +331,22 @@ export default function DeepSearchPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <MessageSquare className="h-5 w-5" />
-                Analysis History
+                分析履歴
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
                 <div className="p-2 border rounded text-xs">
-                  <p className="font-medium">AI Market Analysis</p>
-                  <p className="text-muted-foreground">2 hours ago</p>
+                  <p className="font-medium">AI市場分析</p>
+                  <p className="text-muted-foreground">2時間前</p>
                 </div>
                 <div className="p-2 border rounded text-xs">
-                  <p className="font-medium">Competitor Analysis Report</p>
-                  <p className="text-muted-foreground">1 day ago</p>
+                  <p className="font-medium">競合分析レポート</p>
+                  <p className="text-muted-foreground">1日前</p>
                 </div>
                 <div className="p-2 border rounded text-xs">
-                  <p className="font-medium">Technology Trend Survey</p>
-                  <p className="text-muted-foreground">3 days ago</p>
+                  <p className="font-medium">技術トレンド調査</p>
+                  <p className="text-muted-foreground">3日前</p>
                 </div>
               </div>
             </CardContent>

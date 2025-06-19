@@ -20,16 +20,16 @@ export default function LoginPage() {
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    // Implement login process here
+    // ログイン処理をここに実装
     setTimeout(() => {
       setIsLoading(false)
-      // Redirect after successful login
+      // ログイン成功後のリダイレクト
       window.location.href = "/"
     }, 1000)
   }
 
   const handleGoogleLogin = () => {
-    // Implement Google login process here
+    // Googleログイン処理をここに実装
     console.log("Google login")
   }
 
@@ -38,7 +38,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">AI Front System</CardTitle>
-          <CardDescription>Log in to your account</CardDescription>
+          <CardDescription>アカウントにログインしてください</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <Button variant="outline" className="w-full" onClick={handleGoogleLogin}>
@@ -60,7 +60,7 @@ export default function LoginPage() {
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
               />
             </svg>
-            Log in with Google
+            Googleでログイン
           </Button>
 
           <div className="relative">
@@ -68,13 +68,13 @@ export default function LoginPage() {
               <Separator className="w-full" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">Or</span>
+              <span className="bg-background px-2 text-muted-foreground">または</span>
             </div>
           </div>
 
           <form onSubmit={handleEmailLogin} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email Address</Label>
+              <Label htmlFor="email">メールアドレス</Label>
               <div className="relative">
                 <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
@@ -89,13 +89,13 @@ export default function LoginPage() {
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">パスワード</Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter password"
+                  placeholder="パスワードを入力"
                   className="pl-10 pr-10"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -117,18 +117,18 @@ export default function LoginPage() {
               </div>
             </div>
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Logging in..." : "Log In"}
+              {isLoading ? "ログイン中..." : "ログイン"}
             </Button>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col space-y-2">
           <Link href="/forgot-password" className="text-sm text-muted-foreground hover:underline">
-            Forgot password?
+            パスワードを忘れた方はこちら
           </Link>
           <div className="text-sm text-muted-foreground">
-            Don't have an account?{" "}
+            アカウントをお持ちでない方は{" "}
             <Link href="/signup" className="text-primary hover:underline">
-              Sign Up
+              新規登録
             </Link>
           </div>
         </CardFooter>

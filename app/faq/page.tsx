@@ -30,10 +30,10 @@ const topQuestions = [
   {
     id: 1,
     rank: 1,
-    question: "How do I create an AI agent?",
+    question: "AIエージェントの作成方法は？",
     answer:
-      "To create an AI agent, follow these steps:\n1. Click the 'AI Agents' menu\n2. Press the 'New Agent' button\n3. Enter the agent name and description\n4. Select the AI model to use\n5. Set the prompt\n6. Click 'Save'",
-    category: "Basic Operations",
+      "AIエージェントを作成するには、以下の手順に従ってください：\n1. 「AIエージェント」メニューをクリック\n2. 「新しいエージェント」ボタンを押す\n3. エージェント名と説明を入力\n4. 使用するAIモデルを選択\n5. プロンプトを設定\n6. 「保存」をクリック",
+    category: "基本操作",
     views: 1234,
     helpful: 89,
     notHelpful: 12,
@@ -41,10 +41,10 @@ const topQuestions = [
   {
     id: 2,
     rank: 2,
-    question: "What are the file upload limits?",
+    question: "ファイルアップロードの制限は？",
     answer:
-      "File uploads have the following limits:\n• Maximum file size: 100MB\n• Supported formats: PDF, CSV, Excel, Word, PowerPoint\n• Simultaneous uploads: Up to 10 files\n• Monthly upload limit: Varies by plan",
-    category: "Basic Operations",
+      "ファイルアップロードには以下の制限があります：\n• 最大ファイルサイズ: 100MB\n• 対応形式: PDF, CSV, Excel, Word, PowerPoint\n• 同時アップロード: 最大10ファイル\n• 月間アップロード制限: プランにより異なります",
+    category: "基本操作",
     views: 987,
     helpful: 76,
     notHelpful: 8,
@@ -52,10 +52,10 @@ const topQuestions = [
   {
     id: 3,
     rank: 3,
-    question: "How do I save analysis results?",
+    question: "分析結果の保存方法は？",
     answer:
-      "To save analysis results:\n1. After analysis is complete, click the 'Save' button\n2. Enter the analysis name\n3. Select a category (optional)\n4. Confirm 'Save'\n\nSaved analyses can be viewed from 'My Page'.",
-    category: "Data Analysis",
+      "分析結果を保存するには：\n1. 分析完了後、「保存」ボタンをクリック\n2. 分析名を入力\n3. カテゴリを選択（任意）\n4. 「保存」を確定\n\n保存された分析は「マイページ」から確認できます。",
+    category: "データ分析",
     views: 856,
     helpful: 82,
     notHelpful: 6,
@@ -63,10 +63,10 @@ const topQuestions = [
   {
     id: 4,
     rank: 4,
-    question: "How do I optimize prompts?",
+    question: "プロンプトの最適化方法は？",
     answer:
-      "Tips for creating effective prompts:\n• Write specific and clear instructions\n• Specify the expected output format\n• Include examples\n• Provide step-by-step instructions\n• Specify constraints\n\nAlso, utilize the prompt library.",
-    category: "AI Agents",
+      "効果的なプロンプト作成のコツ：\n• 具体的で明確な指示を書く\n• 期待する出力形式を指定\n• 例を含める\n• 段階的な指示を提供\n• 制約条件を明記\n\nプロンプトライブラリも活用してください。",
+    category: "AIエージェント",
     views: 743,
     helpful: 91,
     notHelpful: 4,
@@ -74,10 +74,10 @@ const topQuestions = [
   {
     id: 5,
     rank: 5,
-    question: "How does cost calculation work?",
+    question: "コスト計算の仕組みは？",
     answer:
-      "Costs are calculated based on the following factors:\n• AI model used\n• Number of tokens processed\n• Execution time\n• Features used\n\nDetails can be found in 'Usage & Monitoring'.",
-    category: "Account",
+      "コストは以下の要素で計算されます：\n• 使用したAIモデル\n• 処理したトークン数\n• 実行時間\n• 使用した機能\n\n詳細は「利用状況・モニタリング」で確認できます。",
+    category: "アカウント",
     views: 692,
     helpful: 73,
     notHelpful: 11,
@@ -85,20 +85,21 @@ const topQuestions = [
   {
     id: 6,
     rank: 6,
-    question: "How secure is the data?",
+    question: "データの安全性は？",
     answer:
-      "Data security measures:\n• End-to-end encryption\n• SOC2 Type II compliance\n• GDPR compliance\n• Regular security audits\n• Access control and log management\n\nYour data is strictly protected.",
-    category: "Account",
+      "データセキュリティ対策：\n• エンドツーエンド暗号化\n• SOC2 Type II準拠\n• GDPR対応\n• 定期的なセキュリティ監査\n• アクセス制御とログ管理\n\nお客様のデータは厳重に保護されています。",
+    category: "アカウント",
     views: 634,
     helpful: 88,
     notHelpful: 7,
   },
   {
     id: 7,
-    question: "How do I set up API integration?",
+    rank: 7,
+    question: "API連携の設定方法は？",
     answer:
-      "API integration setup:\n1. Open 'Settings' → 'API Settings'\n2. Click 'New API Connection'\n3. Select API type (Dify, LangChain, etc.)\n4. Enter authentication information\n5. Run a connection test\n6. Save settings",
-    category: "AI Agents",
+      "API連携の設定手順：\n1. 「設定」→「API設定」を開く\n2. 「新しいAPI接続」をクリック\n3. API種類を選択（Dify、LangChain等）\n4. 認証情報を入力\n5. 接続テストを実行\n6. 設定を保存",
+    category: "AIエージェント",
     views: 578,
     helpful: 79,
     notHelpful: 9,
@@ -106,10 +107,10 @@ const topQuestions = [
   {
     id: 8,
     rank: 8,
-    question: "How do I troubleshoot errors?",
+    question: "エラーの対処法は？",
     answer:
-      "Common troubleshooting methods:\n• Reload the page\n• Clear browser cache\n• Try a different browser\n• Check file format\n• Check internet connection\n\nContact support if the problem persists.",
-    category: "Troubleshooting",
+      "一般的なエラーの対処法：\n• ページを再読み込み\n• ブラウザのキャッシュをクリア\n• 異なるブラウザで試す\n• ファイル形式を確認\n• インターネット接続を確認\n\n解決しない場合はサポートにお問い合わせください。",
+    category: "トラブルシューティング",
     views: 523,
     helpful: 65,
     notHelpful: 15,
@@ -117,20 +118,21 @@ const topQuestions = [
   {
     id: 9,
     rank: 9,
-    question: "How do I use the team sharing feature?",
+    question: "チーム共有機能の使い方は？",
     answer:
-      "Team sharing setup:\n1. Select the analysis you want to share\n2. Click the 'Share' button\n3. Enter the email address of the person you want to share with\n4. Set the permission level (View only/Editable)\n5. Confirm 'Share'",
-    category: "Basic Operations",
+      "チーム共有の設定：\n1. 共有したい分析を選択\n2. 「共有」ボタンをクリック\n3. 共有相手のメールアドレスを入力\n4. 権限レベルを設定（閲覧のみ/編集可能）\n5. 「共有」を確定",
+    category: "基本操作",
     views: 467,
     helpful: 71,
     notHelpful: 8,
   },
   {
     id: 10,
-    question: "How do I backup and restore data?",
+    rank: 10,
+    question: "バックアップ・復元方法は？",
     answer:
-      "Data backup:\n• Automatic backup: Executed daily\n• Manual backup: 'Settings' → 'Data Management'\n• Export function: CSV, JSON format\n• Restore: Contact support team\n\nData is retained for 30 days.",
-    category: "Account",
+      "データのバックアップ：\n• 自動バックアップ: 毎日実行\n• 手動バックアップ: 「設定」→「データ管理」\n• エクスポート機能: CSV、JSON形式\n• 復元: サポートチームにお問い合わせ\n\nデータは30日間保持されます。",
+    category: "アカウント",
     views: 412,
     helpful: 68,
     notHelpful: 12,
@@ -138,86 +140,86 @@ const topQuestions = [
 ]
 
 const categories = [
-  { name: "All", count: 63, icon: HelpCircle },
-  { name: "Basic Operations", count: 15, icon: Settings },
-  { name: "AI Agents", count: 12, icon: Zap },
-  { name: "Data Analysis", count: 18, icon: FileText },
-  { name: "Account", count: 8, icon: Users },
-  { name: "Troubleshooting", count: 10, icon: HelpCircle },
+  { name: "すべて", count: 63, icon: HelpCircle },
+  { name: "基本操作", count: 15, icon: Settings },
+  { name: "AIエージェント", count: 12, icon: Zap },
+  { name: "データ分析", count: 18, icon: FileText },
+  { name: "アカウント", count: 8, icon: Users },
+  { name: "トラブルシューティング", count: 10, icon: HelpCircle },
 ]
 
 const guides = [
   {
-    title: "Quick Start Guide",
-    description: "Learn the basics of using AI Front System",
+    title: "クイックスタートガイド",
+    description: "AI Front Systemの基本的な使い方を学ぶ",
     icon: BookOpen,
-    duration: "10 minutes",
-    type: "Guide",
+    duration: "10分",
+    type: "ガイド",
   },
   {
-    title: "AI Agent Creation Tutorial",
-    description: "How to create effective AI agents",
+    title: "AIエージェント作成チュートリアル",
+    description: "効果的なAIエージェントの作成方法",
     icon: Video,
-    duration: "15 minutes",
-    type: "Video",
+    duration: "15分",
+    type: "動画",
   },
   {
-    title: "Data Analysis Best Practices",
-    description: "Tips for improving analysis accuracy",
+    title: "データ分析ベストプラクティス",
+    description: "分析精度を向上させるためのコツ",
     icon: TrendingUp,
-    duration: "20 minutes",
-    type: "Guide",
+    duration: "20分",
+    type: "ガイド",
   },
   {
-    title: "Prompt Engineering",
-    description: "How to create high-quality prompts",
+    title: "プロンプトエンジニアリング",
+    description: "高品質なプロンプトの作成方法",
     icon: Star,
-    duration: "25 minutes",
-    type: "Video",
+    duration: "25分",
+    type: "動画",
   },
 ]
 
 export default function FAQPage() {
   const [searchQuery, setSearchQuery] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  const [sortBy, setSortBy] = useState("Popularity")
+  const [selectedCategory, setSelectedCategory] = useState("すべて")
+  const [sortBy, setSortBy] = useState("人気順")
 
   const filteredQuestions = topQuestions.filter((q) => {
     const matchesSearch =
       q.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
       q.answer.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesCategory = selectedCategory === "All" || q.category === selectedCategory
+    const matchesCategory = selectedCategory === "すべて" || q.category === selectedCategory
     return matchesSearch && matchesCategory
   })
 
   const sortedQuestions = [...filteredQuestions].sort((a, b) => {
-    if (sortBy === "Popularity") return a.rank - b.rank
-    if (sortBy === "Views") return b.views - a.views
-    if (sortBy === "Rating") return b.helpful / (b.helpful + b.notHelpful) - a.helpful / (a.helpful + a.notHelpful)
+    if (sortBy === "人気順") return a.rank - b.rank
+    if (sortBy === "閲覧数") return b.views - a.views
+    if (sortBy === "評価順") return b.helpful / (b.helpful + b.notHelpful) - a.helpful / (a.helpful + a.notHelpful)
     return 0
   })
 
   const handleVote = (questionId: number, isHelpful: boolean) => {
-    // In a real implementation, you would call an API here to record the vote
+    // 実際の実装では、ここでAPIを呼び出して投票を記録
     console.log(`Question ${questionId} voted as ${isHelpful ? "helpful" : "not helpful"}`)
   }
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      {/* Header */}
+      {/* ヘッダー */}
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold">FAQ & Manual</h1>
-        <p className="text-muted-foreground">Frequently asked questions and system usage guide</p>
+        <h1 className="text-3xl font-bold">FAQ・マニュアル</h1>
+        <p className="text-muted-foreground">よくある質問とシステムの使い方をご案内します</p>
       </div>
 
-      {/* Statistics Summary */}
+      {/* 統計サマリー */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center space-x-2">
               <HelpCircle className="h-5 w-5 text-blue-500" />
               <div>
-                <p className="text-sm text-muted-foreground">Total Questions</p>
+                <p className="text-sm text-muted-foreground">総質問数</p>
                 <p className="text-2xl font-bold">63</p>
               </div>
             </div>
@@ -228,7 +230,7 @@ export default function FAQPage() {
             <div className="flex items-center space-x-2">
               <Eye className="h-5 w-5 text-green-500" />
               <div>
-                <p className="text-sm text-muted-foreground">Total Views</p>
+                <p className="text-sm text-muted-foreground">総閲覧数</p>
                 <p className="text-2xl font-bold">12,456</p>
               </div>
             </div>
@@ -239,7 +241,7 @@ export default function FAQPage() {
             <div className="flex items-center space-x-2">
               <ThumbsUp className="h-5 w-5 text-yellow-500" />
               <div>
-                <p className="text-sm text-muted-foreground">Satisfaction</p>
+                <p className="text-sm text-muted-foreground">満足度</p>
                 <p className="text-2xl font-bold">87%</p>
               </div>
             </div>
@@ -250,7 +252,7 @@ export default function FAQPage() {
             <div className="flex items-center space-x-2">
               <MessageCircle className="h-5 w-5 text-purple-500" />
               <div>
-                <p className="text-sm text-muted-foreground">Questions This Month</p>
+                <p className="text-sm text-muted-foreground">今月の質問</p>
                 <p className="text-2xl font-bold">24</p>
               </div>
             </div>
@@ -260,13 +262,13 @@ export default function FAQPage() {
 
       <Tabs defaultValue="faq" className="space-y-6">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="faq">Frequently Asked Questions</TabsTrigger>
-          <TabsTrigger value="guides">Guides & Manuals</TabsTrigger>
-          <TabsTrigger value="support">Support</TabsTrigger>
+          <TabsTrigger value="faq">よくある質問</TabsTrigger>
+          <TabsTrigger value="guides">ガイド・マニュアル</TabsTrigger>
+          <TabsTrigger value="support">サポート</TabsTrigger>
         </TabsList>
 
         <TabsContent value="faq" className="space-y-6">
-          {/* Search & Filter */}
+          {/* 検索・フィルター */}
           <Card>
             <CardContent className="p-4">
               <div className="flex flex-col md:flex-row gap-4">
@@ -274,7 +276,7 @@ export default function FAQPage() {
                   <div className="relative">
                     <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Input
-                      placeholder="Search questions..."
+                      placeholder="質問を検索..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="pl-10"
@@ -303,23 +305,23 @@ export default function FAQPage() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Popularity">Popularity</SelectItem>
-                    <SelectItem value="Views">Views</SelectItem>
-                    <SelectItem value="Rating">Rating</SelectItem>
+                    <SelectItem value="人気順">人気順</SelectItem>
+                    <SelectItem value="閲覧数">閲覧数</SelectItem>
+                    <SelectItem value="評価順">評価順</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
             </CardContent>
           </Card>
 
-          {/* TOP10 Ranking */}
+          {/* TOP10ランキング */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <TrendingUp className="h-5 w-5" />
-                <span>Top 10 Frequently Asked Questions</span>
+                <span>よくある質問 TOP10</span>
               </CardTitle>
-              <CardDescription>The ranking of the most viewed questions</CardDescription>
+              <CardDescription>最も多く閲覧されている質問のランキングです</CardDescription>
             </CardHeader>
             <CardContent>
               <Accordion type="single" collapsible className="space-y-2">
@@ -345,10 +347,10 @@ export default function FAQPage() {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-2">
                             <Badge variant="secondary">{question.category}</Badge>
-                            <span className="text-sm text-muted-foreground">{question.views} views</span>
+                            <span className="text-sm text-muted-foreground">{question.views}回閲覧</span>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <span className="text-sm text-muted-foreground">Was this answer helpful?</span>
+                            <span className="text-sm text-muted-foreground">この回答は役に立ちましたか？</span>
                             <Button
                               variant="outline"
                               size="sm"
@@ -392,7 +394,7 @@ export default function FAQPage() {
                       <p className="text-sm text-muted-foreground mb-3">{guide.description}</p>
                       <div className="flex items-center space-x-2">
                         <Badge variant="outline">{guide.type}</Badge>
-                        <span className="text-sm text-muted-foreground">Approx. {guide.duration}</span>
+                        <span className="text-sm text-muted-foreground">約{guide.duration}</span>
                       </div>
                     </div>
                   </div>
@@ -406,41 +408,41 @@ export default function FAQPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card>
               <CardHeader>
-                <CardTitle>Contact Us</CardTitle>
-                <CardDescription>If you have any unresolved issues, please feel free to contact us</CardDescription>
+                <CardTitle>お問い合わせ</CardTitle>
+                <CardDescription>解決しない問題がございましたら、お気軽にお問い合わせください</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <Button className="w-full">
                   <MessageCircle className="h-4 w-4 mr-2" />
-                  Support Chat
+                  サポートチャット
                 </Button>
                 <Button variant="outline" className="w-full">
                   <FileText className="h-4 w-4 mr-2" />
-                  Contact Form
+                  お問い合わせフォーム
                 </Button>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>System Status</CardTitle>
-                <CardDescription>Check the current service status</CardDescription>
+                <CardTitle>システム状況</CardTitle>
+                <CardDescription>現在のサービス稼働状況をご確認いただけます</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span>API Service</span>
-                  <Badge className="bg-green-500">Operational</Badge>
+                  <span>APIサービス</span>
+                  <Badge className="bg-green-500">正常</Badge>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span>Database</span>
-                  <Badge className="bg-green-500">Operational</Badge>
+                  <span>データベース</span>
+                  <Badge className="bg-green-500">正常</Badge>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span>File Upload</span>
-                  <Badge className="bg-green-500">Operational</Badge>
+                  <span>ファイルアップロード</span>
+                  <Badge className="bg-green-500">正常</Badge>
                 </div>
                 <Button variant="outline" className="w-full">
-                  Detailed Status Page
+                  詳細ステータスページ
                 </Button>
               </CardContent>
             </Card>

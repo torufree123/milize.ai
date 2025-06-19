@@ -68,7 +68,7 @@ const getStatusBadge = (status: string) => {
     case "完了":
       return (
         <Badge variant="outline" className="bg-green-100 text-green-800">
-          Donene
+          完了
         </Badge>
       )
     case "処理中":
@@ -92,8 +92,8 @@ export default function RecentAnalyses() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Latest report</CardTitle>
-        <CardDescription>List of Latest report just created</CardDescription>
+        <CardTitle>最近の分析</CardTitle>
+        <CardDescription>最近実行された分析の一覧</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>

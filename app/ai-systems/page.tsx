@@ -30,77 +30,77 @@ import {
 const aiSystems = [
   {
     id: "news-analysis",
-    name: "News Analysis",
-    description: "Comprehensively analyzes news about companies and industries to extract important information",
+    name: "ニュース分析",
+    description: "企業・業界のニュースを包括的に分析し、重要な情報を抽出します",
     icon: Newspaper,
     color: "bg-blue-500",
   },
   {
     id: "market-analysis",
-    name: "Market Analysis",
-    description: "Analyzes market trends and competitive landscape to identify business opportunities",
+    name: "市場分析",
+    description: "市場動向と競合状況を分析し、ビジネス機会を特定します",
     icon: TrendingUp,
     color: "bg-green-500",
   },
   {
     id: "risk-analysis",
-    name: "Risk Analysis",
-    description: "Evaluates corporate risk factors and identifies potential problems",
+    name: "リスク分析",
+    description: "企業のリスク要因を評価し、潜在的な問題を特定します",
     icon: AlertTriangle,
     color: "bg-orange-500",
   },
   {
     id: "investment-analysis",
-    name: "Investment Analysis",
-    description: "Supports investment decisions based on financial data and market information",
+    name: "投資分析",
+    description: "財務データと市場情報を基に投資判断を支援します",
     icon: DollarSign,
     color: "bg-purple-500",
   },
 ]
 
 const countries = [
-  { value: "japan", label: "Japan" },
-  { value: "usa", label: "USA" },
-  { value: "china", label: "China" },
-  { value: "europe", label: "Europe" },
-  { value: "global", label: "Global" },
+  { value: "japan", label: "日本" },
+  { value: "usa", label: "アメリカ" },
+  { value: "china", label: "中国" },
+  { value: "europe", label: "ヨーロッパ" },
+  { value: "global", label: "グローバル" },
 ]
 
 const industries = [
-  { value: "manufacturing", label: "Manufacturing" },
-  { value: "finance", label: "Finance" },
-  { value: "it-telecom", label: "IT & Telecom" },
-  { value: "retail", label: "Retail" },
-  { value: "healthcare", label: "Healthcare" },
-  { value: "energy", label: "Energy" },
-  { value: "real-estate", label: "Real Estate" },
-  { value: "transportation", label: "Transportation & Logistics" },
+  { value: "manufacturing", label: "製造業" },
+  { value: "finance", label: "金融業" },
+  { value: "it-telecom", label: "IT・通信" },
+  { value: "retail", label: "小売業" },
+  { value: "healthcare", label: "ヘルスケア" },
+  { value: "energy", label: "エネルギー" },
+  { value: "real-estate", label: "不動産" },
+  { value: "transportation", label: "運輸・物流" },
 ]
 
 const sectors = {
-  manufacturing: ["Automobiles", "Electronics", "Chemicals", "Steel", "Machinery"],
-  finance: ["Banking", "Securities", "Insurance", "Leasing", "Fintech"],
-  "it-telecom": ["Software", "Hardware", "Telecom", "Internet", "AI & IoT"],
-  retail: ["Department Stores", "Supermarkets", "Convenience Stores", "E-commerce", "Apparel"],
-  healthcare: ["Pharmaceuticals", "Medical Devices", "Hospitals", "Biotech", "Healthtech"],
-  energy: ["Oil & Gas", "Electricity", "Renewable Energy", "Nuclear", "Energy Storage"],
+  manufacturing: ["自動車", "電子機器", "化学", "鉄鋼", "機械"],
+  finance: ["銀行", "証券", "保険", "リース", "フィンテック"],
+  "it-telecom": ["ソフトウェア", "ハードウェア", "通信", "インターネット", "AI・IoT"],
+  retail: ["百貨店", "スーパー", "コンビニ", "EC", "アパレル"],
+  healthcare: ["製薬", "医療機器", "病院", "バイオテック", "ヘルステック"],
+  energy: ["石油・ガス", "電力", "再生可能エネルギー", "原子力", "エネルギー貯蔵"],
 }
 
 const informationSources = [
-  { id: "news", label: "News", icon: Newspaper },
-  { id: "press", label: "Press Releases", icon: FileText },
-  { id: "website", label: "Website", icon: Globe },
+  { id: "news", label: "ニュース", icon: Newspaper },
+  { id: "press", label: "プレスリリース", icon: FileText },
+  { id: "website", label: "Webサイト", icon: Globe },
   { id: "sns", label: "SNS", icon: MessageSquare },
-  { id: "securities", label: "Securities Reports", icon: BarChart3 },
-  { id: "integrated", label: "Integrated Reports", icon: Building2 },
+  { id: "securities", label: "有価証券報告書", icon: BarChart3 },
+  { id: "integrated", label: "統合報告書", icon: Building2 },
 ]
 
 const periods = [
-  { value: "1week", label: "Last 1 Week" },
-  { value: "1month", label: "Last 1 Month" },
-  { value: "3months", label: "Last 3 Months" },
-  { value: "1year", label: "Last 1 Year" },
-  { value: "custom", label: "Custom Period" },
+  { value: "1week", label: "過去1週間" },
+  { value: "1month", label: "過去1ヶ月" },
+  { value: "3months", label: "過去3ヶ月" },
+  { value: "1year", label: "過去1年" },
+  { value: "custom", label: "カスタム期間" },
 ]
 
 export default function AISystemsPage() {
@@ -137,14 +137,14 @@ export default function AISystemsPage() {
     setIsAnalyzing(true)
     setAnalysisProgress(0)
 
-    // Simulated analysis process
+    // シミュレートされた分析プロセス
     const steps = [
-      "Connecting to data sources...",
-      "Collecting information...",
-      "Analyzing text...",
-      "Extracting keywords...",
-      "Evaluating importance...",
-      "Summarizing results...",
+      "データソースに接続中...",
+      "情報を収集中...",
+      "テキストを分析中...",
+      "キーワードを抽出中...",
+      "重要度を評価中...",
+      "結果をまとめ中...",
     ]
 
     for (let i = 0; i < steps.length; i++) {
@@ -152,21 +152,21 @@ export default function AISystemsPage() {
       setAnalysisProgress((i + 1) * (100 / steps.length))
     }
 
-    // Sample analysis results
+    // サンプル分析結果
     setAnalysisResults({
       summary:
-        "15 important news items were found for the selected company in the past month. Overall, a positive trend is observed, with many reports of new product announcements and improved performance.",
+        "選択された企業について、過去1ヶ月間で重要なニュースが15件見つかりました。全体的にポジティブな傾向が見られ、新製品発表や業績向上に関する報道が多く確認されています。",
       keywords: [
-        { word: "New Product", importance: 95, sentiment: "positive" },
-        { word: "Improved Performance", importance: 88, sentiment: "positive" },
-        { word: "Market Expansion", importance: 82, sentiment: "positive" },
-        { word: "Investment", importance: 75, sentiment: "neutral" },
-        { word: "Competition", importance: 68, sentiment: "negative" },
+        { word: "新製品", importance: 95, sentiment: "positive" },
+        { word: "業績向上", importance: 88, sentiment: "positive" },
+        { word: "市場拡大", importance: 82, sentiment: "positive" },
+        { word: "投資", importance: 75, sentiment: "neutral" },
+        { word: "競合", importance: 68, sentiment: "negative" },
       ],
       people: [
-        { name: "Taro Tanaka", role: "CEO", mentions: 8 },
-        { name: "Hanako Sato", role: "CFO", mentions: 5 },
-        { name: "Jiro Yamada", role: "Executive Officer", mentions: 3 },
+        { name: "田中太郎", role: "代表取締役社長", mentions: 8 },
+        { name: "佐藤花子", role: "取締役CFO", mentions: 5 },
+        { name: "山田次郎", role: "執行役員", mentions: 3 },
       ],
       categories: {
         positive: 60,
@@ -181,10 +181,10 @@ export default function AISystemsPage() {
       financialAnalysis:
         selectedSystem === "news-analysis" && analysisConfig.sources.includes("securities")
           ? {
-              revenue: { value: "$12.5B", change: "+12.5%" },
-              profit: { value: "$1.8B", change: "+8.3%" },
-              roe: { value: "15.2%", rating: "Excellent" },
-              roa: { value: "8.7%", rating: "Good" },
+              revenue: { value: "1,250億円", change: "+12.5%" },
+              profit: { value: "180億円", change: "+8.3%" },
+              roe: { value: "15.2%", rating: "優秀" },
+              roa: { value: "8.7%", rating: "良好" },
               scores: {
                 profitability: 85,
                 safety: 78,
@@ -204,10 +204,8 @@ export default function AISystemsPage() {
     <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">AI Systems</h1>
-          <p className="text-muted-foreground mt-2">
-            Comprehensively analyze corporate and market information with advanced AI analysis systems
-          </p>
+          <h1 className="text-3xl font-bold">AIシステム</h1>
+          <p className="text-muted-foreground mt-2">高度なAI分析システムで企業・市場情報を包括的に分析</p>
         </div>
       </div>
 
@@ -231,7 +229,7 @@ export default function AISystemsPage() {
                   <CardDescription className="text-sm">{system.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button className="w-full">Select</Button>
+                  <Button className="w-full">選択する</Button>
                 </CardContent>
               </Card>
             )
@@ -241,7 +239,7 @@ export default function AISystemsPage() {
         <div className="space-y-6">
           <div className="flex items-center gap-4">
             <Button variant="outline" onClick={() => setSelectedSystem(null)}>
-              ← Back
+              ← 戻る
             </Button>
             <div className="flex items-center gap-3">
               {selectedSystemData && (
@@ -262,9 +260,9 @@ export default function AISystemsPage() {
 
           <Tabs defaultValue="config" className="space-y-6">
             <TabsList>
-              <TabsTrigger value="config">Analysis Settings</TabsTrigger>
+              <TabsTrigger value="config">分析設定</TabsTrigger>
               <TabsTrigger value="results" disabled={!analysisResults}>
-                Analysis Results
+                分析結果
               </TabsTrigger>
             </TabsList>
 
@@ -273,19 +271,19 @@ export default function AISystemsPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Settings className="h-5 w-5" />
-                    Analysis Condition Settings
+                    分析条件設定
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="country">Country/Region</Label>
+                      <Label htmlFor="country">国・地域</Label>
                       <Select
                         value={analysisConfig.country}
                         onValueChange={(value) => setAnalysisConfig((prev) => ({ ...prev, country: value }))}
                       >
                         <SelectTrigger>
-                          <SelectValue placeholder="Select country" />
+                          <SelectValue placeholder="国を選択" />
                         </SelectTrigger>
                         <SelectContent>
                           {countries.map((country) => (
@@ -298,7 +296,7 @@ export default function AISystemsPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="industry">Industry</Label>
+                      <Label htmlFor="industry">産業</Label>
                       <Select
                         value={analysisConfig.industry}
                         onValueChange={(value) =>
@@ -306,7 +304,7 @@ export default function AISystemsPage() {
                         }
                       >
                         <SelectTrigger>
-                          <SelectValue placeholder="Select industry" />
+                          <SelectValue placeholder="産業を選択" />
                         </SelectTrigger>
                         <SelectContent>
                           {industries.map((industry) => (
@@ -319,14 +317,14 @@ export default function AISystemsPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="sector">Sector</Label>
+                      <Label htmlFor="sector">業種</Label>
                       <Select
                         value={analysisConfig.sector}
                         onValueChange={(value) => setAnalysisConfig((prev) => ({ ...prev, sector: value }))}
                         disabled={!analysisConfig.industry}
                       >
                         <SelectTrigger>
-                          <SelectValue placeholder="Select sector" />
+                          <SelectValue placeholder="業種を選択" />
                         </SelectTrigger>
                         <SelectContent>
                           {analysisConfig.industry &&
@@ -340,10 +338,10 @@ export default function AISystemsPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="company">Company Name</Label>
+                      <Label htmlFor="company">企業名</Label>
                       <Input
                         id="company"
-                        placeholder="Enter company name"
+                        placeholder="企業名を入力"
                         value={analysisConfig.company}
                         onChange={(e) => setAnalysisConfig((prev) => ({ ...prev, company: e.target.value }))}
                       />
@@ -353,7 +351,7 @@ export default function AISystemsPage() {
                   <Separator />
 
                   <div className="space-y-4">
-                    <Label>Information Sources</Label>
+                    <Label>情報ソース</Label>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                       {informationSources.map((source) => {
                         const IconComponent = source.icon
@@ -377,13 +375,13 @@ export default function AISystemsPage() {
                   <Separator />
 
                   <div className="space-y-4">
-                    <Label>Analysis Period</Label>
+                    <Label>分析期間</Label>
                     <Select
                       value={analysisConfig.period}
                       onValueChange={(value) => setAnalysisConfig((prev) => ({ ...prev, period: value }))}
                     >
                       <SelectTrigger className="w-full md:w-64">
-                        <SelectValue placeholder="Select period" />
+                        <SelectValue placeholder="期間を選択" />
                       </SelectTrigger>
                       <SelectContent>
                         {periods.map((period) => (
@@ -397,7 +395,7 @@ export default function AISystemsPage() {
                     {analysisConfig.period === "custom" && (
                       <div className="grid grid-cols-2 gap-4 mt-4">
                         <div className="space-y-2">
-                          <Label htmlFor="start-date">Start Date</Label>
+                          <Label htmlFor="start-date">開始日</Label>
                           <Input
                             id="start-date"
                             type="date"
@@ -408,7 +406,7 @@ export default function AISystemsPage() {
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="end-date">End Date</Label>
+                          <Label htmlFor="end-date">終了日</Label>
                           <Input
                             id="end-date"
                             type="date"
@@ -427,14 +425,14 @@ export default function AISystemsPage() {
                       className="flex items-center gap-2"
                     >
                       <Play className="h-4 w-4" />
-                      {isAnalyzing ? "Analyzing..." : "Start Analysis"}
+                      {isAnalyzing ? "分析中..." : "分析開始"}
                     </Button>
                   </div>
 
                   {isAnalyzing && (
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span>Analysis Progress</span>
+                        <span>分析進行状況</span>
                         <span>{Math.round(analysisProgress)}%</span>
                       </div>
                       <Progress value={analysisProgress} />
@@ -450,10 +448,10 @@ export default function AISystemsPage() {
                   <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center justify-between">
-                        <span>Analysis Results Summary</span>
+                        <span>分析結果サマリー</span>
                         <Button variant="outline" size="sm">
                           <Download className="h-4 w-4 mr-2" />
-                          Export
+                          エクスポート
                         </Button>
                       </CardTitle>
                     </CardHeader>
@@ -465,7 +463,7 @@ export default function AISystemsPage() {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <Card>
                       <CardHeader>
-                        <CardTitle>Keyword Analysis</CardTitle>
+                        <CardTitle>キーワード分析</CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-3">
                         {analysisResults.keywords.map((keyword: any, index: number) => (
@@ -482,10 +480,10 @@ export default function AISystemsPage() {
                                 }
                               >
                                 {keyword.sentiment === "positive"
-                                  ? "Positive"
+                                  ? "ポジティブ"
                                   : keyword.sentiment === "negative"
-                                    ? "Negative"
-                                    : "Neutral"}
+                                    ? "ネガティブ"
+                                    : "ニュートラル"}
                               </Badge>
                             </div>
                             <div className="flex items-center gap-2">
@@ -499,7 +497,7 @@ export default function AISystemsPage() {
 
                     <Card>
                       <CardHeader>
-                        <CardTitle>People Mentioned</CardTitle>
+                        <CardTitle>登場人物</CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-3">
                         {analysisResults.people.map((person: any, index: number) => (
@@ -508,7 +506,7 @@ export default function AISystemsPage() {
                               <div className="font-medium">{person.name}</div>
                               <div className="text-sm text-muted-foreground">{person.role}</div>
                             </div>
-                            <Badge variant="outline">{person.mentions} Mentions</Badge>
+                            <Badge variant="outline">{person.mentions}回言及</Badge>
                           </div>
                         ))}
                       </CardContent>
@@ -518,26 +516,26 @@ export default function AISystemsPage() {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <Card>
                       <CardHeader>
-                        <CardTitle>Information Classification</CardTitle>
+                        <CardTitle>情報分類</CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div className="space-y-2">
                           <div className="flex justify-between">
-                            <span>Positive</span>
+                            <span>ポジティブ</span>
                             <span>{analysisResults.categories.positive}%</span>
                           </div>
                           <Progress value={analysisResults.categories.positive} className="bg-green-100" />
                         </div>
                         <div className="space-y-2">
                           <div className="flex justify-between">
-                            <span>Neutral</span>
+                            <span>ニュートラル</span>
                             <span>{analysisResults.categories.neutral}%</span>
                           </div>
                           <Progress value={analysisResults.categories.neutral} className="bg-gray-100" />
                         </div>
                         <div className="space-y-2">
                           <div className="flex justify-between">
-                            <span>Negative</span>
+                            <span>ネガティブ</span>
                             <span>{analysisResults.categories.negative}%</span>
                           </div>
                           <Progress value={analysisResults.categories.negative} className="bg-red-100" />
@@ -547,14 +545,14 @@ export default function AISystemsPage() {
 
                     <Card>
                       <CardHeader>
-                        <CardTitle>Importance Evaluation</CardTitle>
+                        <CardTitle>重要度評価</CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div className="space-y-2">
                           <div className="flex justify-between">
                             <span className="flex items-center gap-2">
                               <Star className="h-4 w-4 text-yellow-500" />
-                              High Importance
+                              高重要度
                             </span>
                             <span>{analysisResults.importance.high}%</span>
                           </div>
@@ -562,14 +560,14 @@ export default function AISystemsPage() {
                         </div>
                         <div className="space-y-2">
                           <div className="flex justify-between">
-                            <span>Medium Importance</span>
+                            <span>中重要度</span>
                             <span>{analysisResults.importance.medium}%</span>
                           </div>
                           <Progress value={analysisResults.importance.medium} />
                         </div>
                         <div className="space-y-2">
                           <div className="flex justify-between">
-                            <span>Low Importance</span>
+                            <span>低重要度</span>
                             <span>{analysisResults.importance.low}%</span>
                           </div>
                           <Progress value={analysisResults.importance.low} />
@@ -578,76 +576,77 @@ export default function AISystemsPage() {
                     </Card>
                   </div>
 
-                {analysisResults.financialAnalysis && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Financial Analysis & Overall Evaluation</CardTitle>
-                      <CardDescription>Financial analysis results based on securities reports</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-6">
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div className="text-center">
-                          <div className="text-2xl font-bold">{analysisResults.financialAnalysis.revenue.value}</div>
-                          <div className="text-sm text-muted-foreground">Revenue</div>
-                          <Badge variant="default" className="mt-1">
-                            {analysisResults.financialAnalysis.revenue.change}
-                          </Badge>
+                  {analysisResults.financialAnalysis && (
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>財務分析・総合評価</CardTitle>
+                        <CardDescription>有価証券報告書に基づく財務分析結果</CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-6">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                          <div className="text-center">
+                            <div className="text-2xl font-bold">{analysisResults.financialAnalysis.revenue.value}</div>
+                            <div className="text-sm text-muted-foreground">売上高</div>
+                            <Badge variant="default" className="mt-1">
+                              {analysisResults.financialAnalysis.revenue.change}
+                            </Badge>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-2xl font-bold">{analysisResults.financialAnalysis.profit.value}</div>
+                            <div className="text-sm text-muted-foreground">純利益</div>
+                            <Badge variant="default" className="mt-1">
+                              {analysisResults.financialAnalysis.profit.change}
+                            </Badge>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-2xl font-bold">{analysisResults.financialAnalysis.roe.value}</div>
+                            <div className="text-sm text-muted-foreground">ROE</div>
+                            <Badge variant="default" className="mt-1">
+                              {analysisResults.financialAnalysis.roe.rating}
+                            </Badge>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-2xl font-bold">{analysisResults.financialAnalysis.roa.value}</div>
+                            <div className="text-sm text-muted-foreground">ROA</div>
+                            <Badge variant="default" className="mt-1">
+                              {analysisResults.financialAnalysis.roa.rating}
+                            </Badge>
+                          </div>
                         </div>
-                        <div className="text-center">
-                          <div className="text-2xl font-bold">{analysisResults.financialAnalysis.profit.value}</div>
-                          <div className="text-sm text-muted-foreground">Net Profit</div>
-                          <Badge variant="default" className="mt-1">
-                            {analysisResults.financialAnalysis.profit.change}
-                          </Badge>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-2xl font-bold">{analysisResults.financialAnalysis.roe.value}</div>
-                          <div className="text-sm text-muted-foreground">ROE</div>
-                          <Badge variant="default" className="mt-1">
-                            {analysisResults.financialAnalysis.roe.rating}
-                          </Badge>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-2xl font-bold">{analysisResults.financialAnalysis.roa.value}</div>
-                          <div className="text-sm text-muted-foreground">ROA</div>
-                          <Badge variant="default" className="mt-1">
-                            {analysisResults.financialAnalysis.roa.rating}
-                          </Badge>
-                        </div>
-                      </div>
 
-                      <Separator />
+                        <Separator />
 
-                      <div className="space-y-4">
-                        <h4 className="font-semibold">Evaluation Axis Scores</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <div className="flex justify-between">
-                              <span>Profitability</span>
-                              <span>{analysisResults.financialAnalysis.scores.profitability} points</span>
+                        <div className="space-y-4">
+                          <h4 className="font-semibold">評価軸別スコア</h4>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                              <div className="flex justify-between">
+                                <span>収益性</span>
+                                <span>{analysisResults.financialAnalysis.scores.profitability}点</span>
+                              </div>
+                              <Progress value={analysisResults.financialAnalysis.scores.profitability} />
                             </div>
-                            <Progress value={analysisResults.financialAnalysis.scores.profitability} />
-                          </div>
-                          <div className="space-y-2">
-                            <div className="flex justify-between">
-                              <span>Safety</span>
-                              <span>{analysisResults.financialAnalysis.scores.safety} points</span>
+                            <div className="space-y-2">
+                              <div className="flex justify-between">
+                                <span>安全性</span>
+                                <span>{analysisResults.financialAnalysis.scores.safety}点</span>
+                              </div>
+                              <Progress value={analysisResults.financialAnalysis.scores.safety} />
                             </div>
-                            <Progress value={analysisResults.financialAnalysis.scores.safety} />
-                          </div>
-                          <div className="space-y-2">
-                            <div className="flex justify-between">
-                              <span>Growth</span>
-                              <span>{analysisResults.financialAnalysis.scores.growth} points</span>
+                            <div className="space-y-2">
+                              <div className="flex justify-between">
+                                <span>成長性</span>
+                                <span>{analysisResults.financialAnalysis.scores.growth}点</span>
+                              </div>
+                              <Progress value={analysisResults.financialAnalysis.scores.growth} />
                             </div>
-                            <Progress value={analysisResults.financialAnalysis.scores.growth} />
-                          </div>
-                          <div className="space-y-2">
-                            <div className="flex justify-between">
-                              <span>Efficiency</span>
-                              <span>{analysisResults.financialAnalysis.scores.efficiency} points</span>
+                            <div className="space-y-2">
+                              <div className="flex justify-between">
+                                <span>効率性</span>
+                                <span>{analysisResults.financialAnalysis.scores.efficiency}点</span>
+                              </div>
+                              <Progress value={analysisResults.financialAnalysis.scores.efficiency} />
                             </div>
-                            <Progress value={analysisResults.financialAnalysis.scores.efficiency} />
                           </div>
                         </div>
                       </CardContent>

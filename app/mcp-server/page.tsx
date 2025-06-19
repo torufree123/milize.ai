@@ -38,7 +38,7 @@ export default function MCPServerPage() {
   const [toolsEnabled, setToolsEnabled] = useState(true)
   const [debugMode, setDebugMode] = useState(false)
 
-  // Determine color based on server status
+  // サーバーステータスに基づいて色を決定
   const getStatusColor = (status: string) => {
     switch (status) {
       case "running":
@@ -52,7 +52,7 @@ export default function MCPServerPage() {
     }
   }
 
-  // Toggle server status between running and stopped
+  // サーバーの起動/停止を切り替える
   const toggleServerStatus = () => {
     if (serverStatus === "running") {
       setServerStatus("stopped")
@@ -61,7 +61,7 @@ export default function MCPServerPage() {
     }
   }
 
-  // Toggle debug mode
+  // デバッグモードを切り替える
   const toggleDebugMode = () => {
     setDebugMode(!debugMode)
   }
@@ -70,21 +70,21 @@ export default function MCPServerPage() {
     <div className="container mx-auto py-6 space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">MCP Server Settings</h1>
+          <h1 className="text-3xl font-bold tracking-tight">MCPサーバー設定</h1>
           <p className="text-muted-foreground">
-            Model Context Protocol (MCP) - Interaction protocol with AI models developed by Claude
+            Model Context Protocol (MCP) - Claudeが開発したAIモデルとのインタラクションプロトコル
           </p>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <div className={`w-3 h-3 rounded-full ${getStatusColor(serverStatus)}`}></div>
             <span className="capitalize">
-              {serverStatus === "running" ? "Running" : serverStatus === "stopped" ? "Stopped" : "Maintenance"}
+              {serverStatus === "running" ? "稼働中" : serverStatus === "stopped" ? "停止中" : "メンテナンス中"}
             </span>
           </div>
           <Button variant="outline" size="sm" onClick={() => setActiveTab("settings")}>
             <Settings className="mr-2 h-4 w-4" />
-            Settings
+            設定
           </Button>
           <Button
             variant={serverStatus === "running" ? "destructive" : "default"}
@@ -92,7 +92,7 @@ export default function MCPServerPage() {
             onClick={toggleServerStatus}
           >
             <Power className="mr-2 h-4 w-4" />
-            {serverStatus === "running" ? "Stop" : "Start"}
+            {serverStatus === "running" ? "停止" : "起動"}
           </Button>
         </div>
       </div>
@@ -101,54 +101,54 @@ export default function MCPServerPage() {
         <TabsList className="grid grid-cols-6 lg:grid-cols-6">
           <TabsTrigger value="overview">
             <BarChart className="h-4 w-4 mr-2" />
-            <span className="hidden sm:inline">Overview</span>
+            <span className="hidden sm:inline">概要</span>
           </TabsTrigger>
           <TabsTrigger value="settings">
             <Settings className="h-4 w-4 mr-2" />
-            <span className="hidden sm:inline">Protocol Settings</span>
+            <span className="hidden sm:inline">プロトコル設定</span>
           </TabsTrigger>
           <TabsTrigger value="models">
             <Brain className="h-4 w-4 mr-2" />
-            <span className="hidden sm:inline">Model Integration</span>
+            <span className="hidden sm:inline">モデル連携</span>
           </TabsTrigger>
           <TabsTrigger value="tools">
             <Zap className="h-4 w-4 mr-2" />
-            <span className="hidden sm:inline">Tool Integration</span>
+            <span className="hidden sm:inline">ツール連携</span>
           </TabsTrigger>
           <TabsTrigger value="logs">
             <FileText className="h-4 w-4 mr-2" />
-            <span className="hidden sm:inline">Logs</span>
+            <span className="hidden sm:inline">ログ</span>
           </TabsTrigger>
           <TabsTrigger value="api">
             <Code className="h-4 w-4 mr-2" />
-            <span className="hidden sm:inline">API Settings</span>
+            <span className="hidden sm:inline">API設定</span>
           </TabsTrigger>
         </TabsList>
 
-        {/* Overview Tab */}
+        {/* 概要タブ */}
         <TabsContent value="overview" className="space-y-4">
-          {/* Alerts */}
+          {/* アラート */}
           {debugMode && (
             <Alert variant="warning">
               <AlertTriangle className="h-4 w-4" />
-              <AlertTitle>Debug Mode Enabled</AlertTitle>
+              <AlertTitle>デバッグモード有効</AlertTitle>
               <AlertDescription>
-                The MCP server is currently running in debug mode. Detailed logs will be recorded.
+                現在MCPサーバーはデバッグモードで動作しています。詳細なログが記録されます。
               </AlertDescription>
             </Alert>
           )}
 
-          {/* MCP Overview */}
+          {/* MCP概要 */}
           <Card>
             <CardHeader>
-              <CardTitle>Model Context Protocol (MCP) Overview</CardTitle>
-              <CardDescription>Interaction protocol with AI models developed by Claude</CardDescription>
+              <CardTitle>Model Context Protocol (MCP) 概要</CardTitle>
+              <CardDescription>Claudeが開発したAIモデルとのインタラクションプロトコル</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <p>
-                Model Context Protocol (MCP) is a protocol for streamlining interactions with large language models
-                (LLMs). This protocol allows advanced features such as context management, tool usage, and streaming to
-                be used in a standardized way.
+                Model Context Protocol
+                (MCP)は、大規模言語モデル(LLM)とのインタラクションを効率化するためのプロトコルです。
+                このプロトコルにより、コンテキスト管理、ツール使用、ストリーミングなどの高度な機能を標準化された方法で利用できます。
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div className="flex items-center gap-3">
@@ -156,8 +156,8 @@ export default function MCPServerPage() {
                     <Layers className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium">Extended Context Management</h4>
-                    <p className="text-sm text-muted-foreground">Supports long context windows</p>
+                    <h4 className="font-medium">拡張コンテキスト管理</h4>
+                    <p className="text-sm text-muted-foreground">長いコンテキストウィンドウをサポート</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -165,8 +165,8 @@ export default function MCPServerPage() {
                     <Zap className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium">Tool Integration</h4>
-                    <p className="text-sm text-muted-foreground">Standardized integration with external tools</p>
+                    <h4 className="font-medium">ツール連携</h4>
+                    <p className="text-sm text-muted-foreground">外部ツールとの標準化された連携</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -174,8 +174,8 @@ export default function MCPServerPage() {
                     <GitBranch className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium">Parallel Processing</h4>
-                    <p className="text-sm text-muted-foreground">Efficiently processes multiple tasks</p>
+                    <h4 className="font-medium">並列処理</h4>
+                    <p className="text-sm text-muted-foreground">複数のタスクを効率的に処理</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -183,129 +183,129 @@ export default function MCPServerPage() {
                     <Shield className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium">Security</h4>
-                    <p className="text-sm text-muted-foreground">Secure data exchange and authentication</p>
+                    <h4 className="font-medium">セキュリティ</h4>
+                    <p className="text-sm text-muted-foreground">安全なデータ交換と認証</p>
                   </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Statistics */}
+          {/* 統計情報 */}
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Requests</CardTitle>
+                <CardTitle className="text-sm font-medium">リクエスト数</CardTitle>
                 <MessageSquare className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">1,284</div>
-                <p className="text-xs text-muted-foreground mt-1">Past 24 hours</p>
+                <p className="text-xs text-muted-foreground mt-1">過去24時間</p>
                 <Progress value={65} className="mt-2" />
               </CardContent>
             </Card>
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Average Response Time</CardTitle>
+                <CardTitle className="text-sm font-medium">平均応答時間</CardTitle>
                 <History className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">1.2 seconds</div>
-                <p className="text-xs text-muted-foreground mt-1">Past 24 hours</p>
+                <div className="text-2xl font-bold">1.2秒</div>
+                <p className="text-xs text-muted-foreground mt-1">過去24時間</p>
                 <Progress value={40} className="mt-2" />
               </CardContent>
             </Card>
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Tool Invocations</CardTitle>
+                <CardTitle className="text-sm font-medium">ツール呼び出し</CardTitle>
                 <Zap className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">356</div>
-                <p className="text-xs text-muted-foreground mt-1">Past 24 hours</p>
+                <p className="text-xs text-muted-foreground mt-1">過去24時間</p>
                 <Progress value={28} className="mt-2" />
               </CardContent>
             </Card>
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Error Rate</CardTitle>
+                <CardTitle className="text-sm font-medium">エラー率</CardTitle>
                 <AlertTriangle className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">0.4%</div>
-                <p className="text-xs text-muted-foreground mt-1">Past 24 hours</p>
+                <p className="text-xs text-muted-foreground mt-1">過去24時間</p>
                 <Progress value={0.4} className="mt-2" />
               </CardContent>
             </Card>
           </div>
 
-          {/* Server Information */}
+          {/* サーバー情報 */}
           <div className="grid gap-4 md:grid-cols-2">
             <Card>
               <CardHeader>
-                <CardTitle>MCP Server Information</CardTitle>
-                <CardDescription>Basic server information and settings</CardDescription>
+                <CardTitle>MCPサーバー情報</CardTitle>
+                <CardDescription>基本的なサーバー情報と設定</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-sm">Server Version</Label>
+                    <Label className="text-sm">サーバーバージョン</Label>
                     <div className="font-medium">MCP v1.2.3</div>
                   </div>
                   <div>
-                    <Label className="text-sm">Environment</Label>
-                    <div className="font-medium">Production</div>
+                    <Label className="text-sm">環境</Label>
+                    <div className="font-medium">本番環境</div>
                   </div>
                   <div>
-                    <Label className="text-sm">Endpoint</Label>
+                    <Label className="text-sm">エンドポイント</Label>
                     <div className="font-medium">https://api.example.com/mcp</div>
                   </div>
                   <div>
-                    <Label className="text-sm">Uptime</Label>
-                    <div className="font-medium">14 days 7 hours 32 minutes</div>
+                    <Label className="text-sm">稼働時間</Label>
+                    <div className="font-medium">14日 7時間 32分</div>
                   </div>
                   <div>
-                    <Label className="text-sm">Context Window</Label>
-                    <div className="font-medium">128K Tokens</div>
+                    <Label className="text-sm">コンテキストウィンドウ</Label>
+                    <div className="font-medium">128K トークン</div>
                   </div>
                   <div>
-                    <Label className="text-sm">Max Output Tokens</Label>
-                    <div className="font-medium">4,096 Tokens</div>
+                    <Label className="text-sm">最大出力トークン</Label>
+                    <div className="font-medium">4,096 トークン</div>
                   </div>
                 </div>
               </CardContent>
               <CardFooter>
                 <Button variant="outline" size="sm" className="w-full">
                   <RefreshCw className="mr-2 h-4 w-4" />
-                  Update Information
+                  情報を更新
                 </Button>
               </CardFooter>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Quick Settings</CardTitle>
-                <CardDescription>Quick toggle for key settings</CardDescription>
+                <CardTitle>クイック設定</CardTitle>
+                <CardDescription>主要な設定のクイック切り替え</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="space-y-0.5">
-                    <Label>Streaming Responses</Label>
-                    <div className="text-sm text-muted-foreground">Gradual responses in token units</div>
+                    <Label>ストリーミングレスポンス</Label>
+                    <div className="text-sm text-muted-foreground">トークン単位での段階的な応答</div>
                   </div>
                   <Switch checked={streamingEnabled} onCheckedChange={setStreamingEnabled} />
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="space-y-0.5">
-                    <Label>Tool Integration</Label>
-                    <div className="text-sm text-muted-foreground">Allow the use of external tools</div>
+                    <Label>ツール連携</Label>
+                    <div className="text-sm text-muted-foreground">外部ツールの使用を許可</div>
                   </div>
                   <Switch checked={toolsEnabled} onCheckedChange={setToolsEnabled} />
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="space-y-0.5">
-                    <Label>Debug Mode</Label>
-                    <div className="text-sm text-muted-foreground">Enable detailed logging</div>
+                    <Label>デバッグモード</Label>
+                    <div className="text-sm text-muted-foreground">詳細なログ記録を有効化</div>
                   </div>
                   <Switch checked={debugMode} onCheckedChange={toggleDebugMode} />
                 </div>
@@ -313,17 +313,17 @@ export default function MCPServerPage() {
               <CardFooter>
                 <Button variant="outline" size="sm" className="w-full">
                   <Settings className="mr-2 h-4 w-4" />
-                  Advanced Settings
+                  詳細設定
                 </Button>
               </CardFooter>
             </Card>
           </div>
 
-          {/* Integrated Models */}
+          {/* 連携モデル */}
           <Card>
             <CardHeader>
-              <CardTitle>Integrated AI Models</CardTitle>
-              <CardDescription>AI models currently integrated with MCP</CardDescription>
+              <CardTitle>連携AIモデル</CardTitle>
+              <CardDescription>現在MCPと連携しているAIモデル</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -334,35 +334,35 @@ export default function MCPServerPage() {
                       version: "v1.0",
                       status: "active",
                       contextWindow: "200K",
-                      requests: "520/day",
+                      requests: "520/日",
                     },
                     {
                       name: "Claude 3 Sonnet",
                       version: "v1.0",
                       status: "active",
                       contextWindow: "180K",
-                      requests: "850/day",
+                      requests: "850/日",
                     },
                     {
                       name: "Claude 3 Haiku",
                       version: "v1.0",
                       status: "active",
                       contextWindow: "150K",
-                      requests: "1.2K/day",
+                      requests: "1.2K/日",
                     },
                     {
                       name: "GPT-4o",
                       version: "v1.0",
                       status: "active",
                       contextWindow: "128K",
-                      requests: "780/day",
+                      requests: "780/日",
                     },
                     {
                       name: "Llama 3",
                       version: "v1.0",
                       status: "maintenance",
                       contextWindow: "128K",
-                      requests: "0/day",
+                      requests: "0/日",
                     },
                   ].map((model, i) => (
                     <Card key={i} className="bg-muted/50">
@@ -370,19 +370,19 @@ export default function MCPServerPage() {
                         <div className="flex justify-between items-center">
                           <CardTitle className="text-base">{model.name}</CardTitle>
                           <Badge variant={model.status === "active" ? "default" : "secondary"} className="capitalize">
-                            {model.status === "active" ? "Active" : "Maintenance"}
+                            {model.status === "active" ? "稼働中" : "メンテナンス中"}
                           </Badge>
                         </div>
-                        <CardDescription>Version: {model.version}</CardDescription>
+                        <CardDescription>バージョン: {model.version}</CardDescription>
                       </CardHeader>
                       <CardContent className="p-4 pt-0">
                         <div className="grid grid-cols-2 gap-2 text-sm">
                           <div>
-                            <Label className="text-xs">Context</Label>
+                            <Label className="text-xs">コンテキスト</Label>
                             <div>{model.contextWindow}</div>
                           </div>
                           <div>
-                            <Label className="text-xs">Requests</Label>
+                            <Label className="text-xs">リクエスト数</Label>
                             <div>{model.requests}</div>
                           </div>
                         </div>
@@ -395,64 +395,64 @@ export default function MCPServerPage() {
             <CardFooter>
               <Button variant="outline" size="sm" className="w-full" onClick={() => setActiveTab("models")}>
                 <Brain className="mr-2 h-4 w-4" />
-                Model Integration
+                モデル連携へ
               </Button>
             </CardFooter>
           </Card>
         </TabsContent>
 
-        {/* Protocol Settings Tab */}
+        {/* プロトコル設定タブ */}
         <TabsContent value="settings" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Protocol Settings</CardTitle>
-              <CardDescription>Manage basic MCP settings</CardDescription>
+              <CardTitle>プロトコル設定</CardTitle>
+              <CardDescription>MCPの基本的な設定を管理します</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="endpoint">API Endpoint</Label>
+                  <Label htmlFor="endpoint">APIエンドポイント</Label>
                   <Input id="endpoint" defaultValue="https://api.example.com/mcp" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="version">Protocol Version</Label>
+                  <Label htmlFor="version">プロトコルバージョン</Label>
                   <Select defaultValue="1.2.3">
                     <SelectTrigger>
-                      <SelectValue placeholder="Select Version" />
+                      <SelectValue placeholder="バージョンを選択" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="1.0.0">1.0.0</SelectItem>
                       <SelectItem value="1.1.0">1.1.0</SelectItem>
-                      <SelectItem value="1.2.3">1.2.3 (Latest)</SelectItem>
+                      <SelectItem value="1.2.3">1.2.3 (最新)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="context-window">Context Window (Tokens)</Label>
+                  <Label htmlFor="context-window">コンテキストウィンドウ (トークン)</Label>
                   <Input id="context-window" defaultValue="128000" type="number" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="max-tokens">Max Output Tokens</Label>
+                  <Label htmlFor="max-tokens">最大出力トークン</Label>
                   <Input id="max-tokens" defaultValue="4096" type="number" />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="system-prompt">Default System Prompt</Label>
+                <Label htmlFor="system-prompt">デフォルトシステムプロンプト</Label>
                 <Textarea
                   id="system-prompt"
                   rows={4}
-                  defaultValue="You are a helpful AI assistant. Answer user questions concisely and accurately."
+                  defaultValue="あなたは有用なAIアシスタントです。ユーザーの質問に簡潔かつ正確に回答してください。"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="api-key">API Authentication Key</Label>
+                <Label htmlFor="api-key">API認証キー</Label>
                 <Input id="api-key" type="password" defaultValue="sk_mcp_xxxxxxxxxxxxxxxxxxxx" />
               </div>
 
               <div className="space-y-2">
-                <Label>Response Temperature</Label>
+                <Label>応答温度</Label>
                 <div className="flex items-center gap-4">
                   <Input type="range" min="0" max="1" step="0.1" defaultValue="0.7" className="flex-1" />
                   <span className="w-12 text-center">0.7</span>
@@ -460,8 +460,8 @@ export default function MCPServerPage() {
               </div>
             </CardContent>
             <CardFooter className="flex justify-between">
-              <Button variant="outline">Cancel</Button>
-              <Button>Save Changes</Button>
+              <Button variant="outline">キャンセル</Button>
+              <Button>変更を保存</Button>
             </CardFooter>
           </Card>
         </TabsContent>
@@ -469,12 +469,12 @@ export default function MCPServerPage() {
         <TabsContent value="models" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Model Integration</CardTitle>
-              <CardDescription>Manage AI models integrated with MCP</CardDescription>
+              <CardTitle>モデル連携</CardTitle>
+              <CardDescription>MCPと連携するAIモデルの管理</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="text-center py-12">
-                <p className="text-muted-foreground">Model integration feature is under development</p>
+                <p className="text-muted-foreground">モデル連携機能は準備中です</p>
               </div>
             </CardContent>
           </Card>
@@ -483,12 +483,12 @@ export default function MCPServerPage() {
         <TabsContent value="tools" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Tool Integration</CardTitle>
-              <CardDescription>Settings for external tools used by MCP</CardDescription>
+              <CardTitle>ツール連携</CardTitle>
+              <CardDescription>MCPで使用する外部ツールの設定</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="text-center py-12">
-                <p className="text-muted-foreground">Tool integration feature is under development</p>
+                <p className="text-muted-foreground">ツール連携機能は準備中です</p>
               </div>
             </CardContent>
           </Card>
@@ -497,12 +497,12 @@ export default function MCPServerPage() {
         <TabsContent value="logs" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Log Management</CardTitle>
-              <CardDescription>MCP request and response logs</CardDescription>
+              <CardTitle>ログ管理</CardTitle>
+              <CardDescription>MCPのリクエストとレスポンスのログ</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="text-center py-12">
-                <p className="text-muted-foreground">Log management feature is under development</p>
+                <p className="text-muted-foreground">ログ管理機能は準備中です</p>
               </div>
             </CardContent>
           </Card>
@@ -511,12 +511,12 @@ export default function MCPServerPage() {
         <TabsContent value="api" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>API Settings</CardTitle>
-              <CardDescription>MCP API settings and management</CardDescription>
+              <CardTitle>API設定</CardTitle>
+              <CardDescription>MCP APIの設定と管理</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="text-center py-12">
-                <p className="text-muted-foreground">API settings feature is under development</p>
+                <p className="text-muted-foreground">API設定機能は準備中です</p>
               </div>
             </CardContent>
           </Card>

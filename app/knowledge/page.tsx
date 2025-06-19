@@ -1,9 +1,7 @@
 "use client"
 
-import { CardFooter } from "@/components/ui/card"
-
 import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -14,46 +12,39 @@ import { FileText, Database, Upload, Trash2, Edit, Eye, Search, Plus, Settings }
 export default function KnowledgePage() {
   const [searchQuery, setSearchQuery] = useState("")
 
-  // Sample data
+  // サンプルデータ
   const documents = [
-    { id: 1, name: "Product Manual.pdf", type: "PDF", size: "2.4 MB", date: "2023/06/01", status: "Processed" },
-    { id: 2, name: "Financial Report.xlsx", type: "Excel", size: "1.8 MB", date: "2023/05/15", status: "Processed" },
-    { id: 3, name: "Customer Data.csv", type: "CSV", size: "3.2 MB", date: "2023/05/10", status: "Processed" },
-    {
-      id: 4,
-      name: "Presentation Materials.pptx",
-      type: "PowerPoint",
-      size: "5.1 MB",
-      date: "2023/06/05",
-      status: "Processing",
-    },
-    { id: 5, name: "Meeting Minutes.docx", type: "Word", size: "1.2 MB", date: "2023/06/08", status: "Pending" },
+    { id: 1, name: "製品マニュアル.pdf", type: "PDF", size: "2.4 MB", date: "2023/06/01", status: "処理済" },
+    { id: 2, name: "財務レポート.xlsx", type: "Excel", size: "1.8 MB", date: "2023/05/15", status: "処理済" },
+    { id: 3, name: "顧客データ.csv", type: "CSV", size: "3.2 MB", date: "2023/05/10", status: "処理済" },
+    { id: 4, name: "プレゼン資料.pptx", type: "PowerPoint", size: "5.1 MB", date: "2023/06/05", status: "処理中" },
+    { id: 5, name: "会議議事録.docx", type: "Word", size: "1.2 MB", date: "2023/06/08", status: "未処理" },
   ]
 
   const databases = [
-    { id: 1, name: "Customer Database", type: "MySQL", tables: 12, records: "15,000+", lastSync: "2023/06/10" },
-    { id: 2, name: "Product Catalog", type: "PostgreSQL", tables: 8, records: "5,200+", lastSync: "2023/06/08" },
-    { id: 3, name: "Sales History", type: "SQLite", tables: 5, records: "32,000+", lastSync: "2023/06/05" },
+    { id: 1, name: "顧客データベース", type: "MySQL", tables: 12, records: "15,000+", lastSync: "2023/06/10" },
+    { id: 2, name: "製品カタログ", type: "PostgreSQL", tables: 8, records: "5,200+", lastSync: "2023/06/08" },
+    { id: 3, name: "販売履歴", type: "SQLite", tables: 5, records: "32,000+", lastSync: "2023/06/05" },
   ]
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case "Processed":
+      case "処理済":
         return (
           <Badge variant="outline" className="bg-green-100 text-green-800">
-            Processed
+            処理済
           </Badge>
         )
-      case "Processing":
+      case "処理中":
         return (
           <Badge variant="outline" className="bg-blue-100 text-blue-800">
-            Processing
+            処理中
           </Badge>
         )
-      case "Pending":
+      case "未処理":
         return (
           <Badge variant="outline" className="bg-yellow-100 text-yellow-800">
-            Pending
+            未処理
           </Badge>
         )
       default:
@@ -64,15 +55,15 @@ export default function KnowledgePage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Knowledge Management</h1>
+        <h1 className="text-3xl font-bold">ナレッジ管理</h1>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm">
             <Upload className="mr-2 h-4 w-4" />
-            Upload
+            アップロード
           </Button>
           <Button variant="outline" size="sm">
             <Database className="mr-2 h-4 w-4" />
-            Connect
+            接続
           </Button>
           <Button variant="outline" size="icon">
             <Settings className="h-4 w-4" />
@@ -84,7 +75,7 @@ export default function KnowledgePage() {
         <div className="relative flex-1">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search knowledge..."
+            placeholder="ナレッジを検索..."
             className="pl-8"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -92,25 +83,25 @@ export default function KnowledgePage() {
         </div>
         <Button>
           <Search className="mr-2 h-4 w-4" />
-          Search
+          検索
         </Button>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Knowledge Sources</CardTitle>
-          <CardDescription>Manage the knowledge sources that AI references</CardDescription>
+          <CardTitle>ナレッジソース</CardTitle>
+          <CardDescription>AIが参照するナレッジソースを管理します</CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="documents">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="documents">
                 <FileText className="mr-2 h-4 w-4" />
-                Documents
+                ドキュメント
               </TabsTrigger>
               <TabsTrigger value="databases">
                 <Database className="mr-2 h-4 w-4" />
-                Databases
+                データベース
               </TabsTrigger>
             </TabsList>
             <TabsContent value="documents" className="mt-4">
@@ -118,12 +109,12 @@ export default function KnowledgePage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Name</TableHead>
-                      <TableHead>Type</TableHead>
-                      <TableHead>Size</TableHead>
-                      <TableHead>Upload Date</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead className="w-[100px]">Actions</TableHead>
+                      <TableHead>名前</TableHead>
+                      <TableHead>タイプ</TableHead>
+                      <TableHead>サイズ</TableHead>
+                      <TableHead>アップロード日</TableHead>
+                      <TableHead>ステータス</TableHead>
+                      <TableHead className="w-[100px]">操作</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -155,7 +146,7 @@ export default function KnowledgePage() {
               <div className="mt-4 flex justify-center">
                 <Button variant="outline">
                   <Plus className="mr-2 h-4 w-4" />
-                  Add Document
+                  ドキュメントを追加
                 </Button>
               </div>
             </TabsContent>
@@ -164,12 +155,12 @@ export default function KnowledgePage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Name</TableHead>
-                      <TableHead>Type</TableHead>
-                      <TableHead>Tables</TableHead>
-                      <TableHead>Records</TableHead>
-                      <TableHead>Last Sync</TableHead>
-                      <TableHead className="w-[100px]">Actions</TableHead>
+                      <TableHead>名前</TableHead>
+                      <TableHead>タイプ</TableHead>
+                      <TableHead>テーブル数</TableHead>
+                      <TableHead>レコード数</TableHead>
+                      <TableHead>最終同期</TableHead>
+                      <TableHead className="w-[100px]">操作</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -201,7 +192,7 @@ export default function KnowledgePage() {
               <div className="mt-4 flex justify-center">
                 <Button variant="outline">
                   <Plus className="mr-2 h-4 w-4" />
-                  Connect Database
+                  データベースを接続
                 </Button>
               </div>
             </TabsContent>
@@ -212,14 +203,14 @@ export default function KnowledgePage() {
       <div className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Knowledge Processing</CardTitle>
-            <CardDescription>Document processing status</CardDescription>
+            <CardTitle>ナレッジ処理</CardTitle>
+            <CardDescription>ドキュメントの処理状況</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium">Processed</span>
+                  <span className="text-sm font-medium">処理済み</span>
                   <span className="text-sm font-medium">3/5</span>
                 </div>
                 <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
@@ -229,54 +220,54 @@ export default function KnowledgePage() {
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold">3</div>
-                  <div className="text-xs text-muted-foreground">Processed</div>
+                  <div className="text-xs text-muted-foreground">処理済</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold">1</div>
-                  <div className="text-xs text-muted-foreground">Processing</div>
+                  <div className="text-xs text-muted-foreground">処理中</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold">1</div>
-                  <div className="text-xs text-muted-foreground">Pending</div>
+                  <div className="text-xs text-muted-foreground">未処理</div>
                 </div>
               </div>
             </div>
           </CardContent>
           <CardFooter>
             <Button variant="outline" className="w-full">
-              Process All
+              すべて処理
             </Button>
           </CardFooter>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>Knowledge Usage</CardTitle>
-            <CardDescription>AI knowledge reference status</CardDescription>
+            <CardTitle>ナレッジ使用状況</CardTitle>
+            <CardDescription>AIによるナレッジの参照状況</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-sm">Most Referenced Document</span>
-                <span className="text-sm font-medium">Product Manual.pdf</span>
+                <span className="text-sm">最も参照されたドキュメント</span>
+                <span className="text-sm font-medium">製品マニュアル.pdf</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm">Most Referenced Database</span>
-                <span className="text-sm font-medium">Customer Database</span>
+                <span className="text-sm">最も参照されたデータベース</span>
+                <span className="text-sm font-medium">顧客データベース</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm">References This Month</span>
-                <span className="text-sm font-medium">248</span>
+                <span className="text-sm">今月の参照回数</span>
+                <span className="text-sm font-medium">248回</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm">Month-over-Month Change</span>
+                <span className="text-sm">前月比</span>
                 <span className="text-sm font-medium text-green-600">+15%</span>
               </div>
             </div>
           </CardContent>
           <CardFooter>
             <Button variant="outline" className="w-full">
-              Detailed Report
+              詳細レポート
             </Button>
           </CardFooter>
         </Card>
