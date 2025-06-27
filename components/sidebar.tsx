@@ -233,7 +233,7 @@ export default function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
     >
       {/* ヘッダー */}
       <div className="p-4 border-b flex items-center justify-between">
-        {!isCollapsed && <h1 className="text-xl font-bold truncate">AI Front System</h1>}
+        {!isCollapsed && <h1 className="text-xl font-bold truncate">Milize.ai</h1>}
         <Button variant="ghost" size="icon" onClick={onToggle} className="flex-shrink-0">
           <Menu className="h-4 w-4" />
         </Button>
