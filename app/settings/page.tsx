@@ -12,12 +12,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Switch } from "@/components/ui/switch"
 import { Separator } from "@/components/ui/separator"
 import { Save, RotateCcw } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
 
 export default function SettingsPage() {
+  const { toast } = useToast()
   const [settings, setSettings] = useState({
-    defaultModel: "gpt-4",
+    defaultModel: "gpt-4o",
     temperature: 0.7,
-    maxTokens: 4000,
+    maxTokens: 4096,
     topP: 1.0,
     frequencyPenalty: 0.0,
     presencePenalty: 0.0,
@@ -27,35 +29,75 @@ export default function SettingsPage() {
   })
 
   const models = [
-    { value: "gpt-4", label: "GPT-4", provider: "OpenAI" },
+    // OpenAI
+    { value: "gpt-4o", label: "GPT-4o", provider: "OpenAI" },
+    { value: "gpt-4.5", label: "GPT-4.5", provider: "OpenAI" },
+    { value: "gpt-4.1", label: "GPT-4.1", provider: "OpenAI" },
     { value: "gpt-4-turbo", label: "GPT-4 Turbo", provider: "OpenAI" },
+    { value: "gpt-4", label: "GPT-4", provider: "OpenAI" },
     { value: "gpt-3.5-turbo", label: "GPT-3.5 Turbo", provider: "OpenAI" },
+
+    // Anthropic
+    { value: "claude-3.5-sonnet", label: "Claude 3.5 Sonnet", provider: "Anthropic" },
     { value: "claude-3-opus", label: "Claude 3 Opus", provider: "Anthropic" },
     { value: "claude-3-sonnet", label: "Claude 3 Sonnet", provider: "Anthropic" },
     { value: "claude-3-haiku", label: "Claude 3 Haiku", provider: "Anthropic" },
+
+    // Google
+    { value: "gemini-1.5-pro", label: "Gemini 1.5 Pro", provider: "Google" },
+    { value: "gemini-1.5-flash", label: "Gemini 1.5 Flash", provider: "Google" },
     { value: "gemini-pro", label: "Gemini Pro", provider: "Google" },
-    { value: "gemini-pro-vision", label: "Gemini Pro Vision", provider: "Google" },
+
+    // Groq
+    { value: "groq-llama3-70b", label: "Llama3 70B", provider: "Groq" },
+    { value: "groq-llama3-8b", label: "Llama3 8B", provider: "Groq" },
+    { value: "groq-mixtral-8x7b", label: "Mixtral 8x7B", provider: "Groq" },
+
+    // xAI
+    { value: "grok-1.5", label: "Grok 1.5", provider: "xAI" },
+    { value: "grok-1", label: "Grok 1", provider: "xAI" },
+
+    // Mistral
+    { value: "mistral-large-latest", label: "Mistral Large", provider: "Mistral" },
+    { value: "mistral-small-latest", label: "Mistral Small", provider: "Mistral" },
+
+    // Cohere
+    { value: "command-r-plus", label: "Command R+", provider: "Cohere" },
+    { value: "command-r", label: "Command R", provider: "Cohere" },
+
+    // DeepSeek
     { value: "deepseek-chat", label: "DeepSeek Chat", provider: "DeepSeek" },
     { value: "deepseek-coder", label: "DeepSeek Coder", provider: "DeepSeek" },
   ]
 
+  const providers = [...new Set(models.map((model) => model.provider))]
+
   const handleSave = () => {
     // 設定保存処理
     console.log("Settings saved:", settings)
+    toast({
+      title: "設定が保存されました",
+      description: "新しいモデル設定が適用されます。",
+    })
   }
 
   const handleReset = () => {
     // デフォルト設定にリセット
     setSettings({
-      defaultModel: "gpt-4",
+      defaultModel: "gpt-4o",
       temperature: 0.7,
-      maxTokens: 4000,
+      maxTokens: 4096,
       topP: 1.0,
       frequencyPenalty: 0.0,
       presencePenalty: 0.0,
       systemPrompt: "あなたは親切で知識豊富なAIアシスタントです。",
       enableStreaming: true,
       enableFunctionCalling: true,
+    })
+    toast({
+      title: "設定がリセットされました",
+      description: "すべての設定がデフォルト値に戻りました。",
+      variant: "destructive",
     })
   }
 
@@ -112,15 +154,15 @@ export default function SettingsPage() {
                 </Select>
               </div>
 
-              <div className="grid gap-4 md:grid-cols-2">
-                {models.filter((m) => m.provider === "OpenAI").length > 0 && (
-                  <Card>
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {providers.map((provider) => (
+                  <Card key={provider}>
                     <CardHeader className="pb-3">
-                      <CardTitle className="text-base">OpenAI</CardTitle>
+                      <CardTitle className="text-base">{provider}</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-2">
                       {models
-                        .filter((m) => m.provider === "OpenAI")
+                        .filter((m) => m.provider === provider)
                         .map((model) => (
                           <div key={model.value} className="flex items-center justify-between">
                             <span className="text-sm">{model.label}</span>
@@ -135,79 +177,7 @@ export default function SettingsPage() {
                         ))}
                     </CardContent>
                   </Card>
-                )}
-
-                {models.filter((m) => m.provider === "Anthropic").length > 0 && (
-                  <Card>
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-base">Anthropic</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                      {models
-                        .filter((m) => m.provider === "Anthropic")
-                        .map((model) => (
-                          <div key={model.value} className="flex items-center justify-between">
-                            <span className="text-sm">{model.label}</span>
-                            <Button
-                              variant={settings.defaultModel === model.value ? "default" : "outline"}
-                              size="sm"
-                              onClick={() => setSettings({ ...settings, defaultModel: model.value })}
-                            >
-                              {settings.defaultModel === model.value ? "選択中" : "選択"}
-                            </Button>
-                          </div>
-                        ))}
-                    </CardContent>
-                  </Card>
-                )}
-
-                {models.filter((m) => m.provider === "Google").length > 0 && (
-                  <Card>
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-base">Google</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                      {models
-                        .filter((m) => m.provider === "Google")
-                        .map((model) => (
-                          <div key={model.value} className="flex items-center justify-between">
-                            <span className="text-sm">{model.label}</span>
-                            <Button
-                              variant={settings.defaultModel === model.value ? "default" : "outline"}
-                              size="sm"
-                              onClick={() => setSettings({ ...settings, defaultModel: model.value })}
-                            >
-                              {settings.defaultModel === model.value ? "選択中" : "選択"}
-                            </Button>
-                          </div>
-                        ))}
-                    </CardContent>
-                  </Card>
-                )}
-
-                {models.filter((m) => m.provider === "DeepSeek").length > 0 && (
-                  <Card>
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-base">DeepSeek</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                      {models
-                        .filter((m) => m.provider === "DeepSeek")
-                        .map((model) => (
-                          <div key={model.value} className="flex items-center justify-between">
-                            <span className="text-sm">{model.label}</span>
-                            <Button
-                              variant={settings.defaultModel === model.value ? "default" : "outline"}
-                              size="sm"
-                              onClick={() => setSettings({ ...settings, defaultModel: model.value })}
-                            >
-                              {settings.defaultModel === model.value ? "選択中" : "選択"}
-                            </Button>
-                          </div>
-                        ))}
-                    </CardContent>
-                  </Card>
-                )}
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -247,9 +217,9 @@ export default function SettingsPage() {
                 </div>
                 <Slider
                   value={[settings.maxTokens]}
-                  min={1000}
-                  max={8000}
-                  step={1000}
+                  min={1024}
+                  max={32768}
+                  step={1024}
                   onValueChange={(value) => setSettings({ ...settings, maxTokens: value[0] })}
                 />
               </div>
